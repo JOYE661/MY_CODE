@@ -9,4 +9,8 @@ import scrapy
 class DoubanItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    num = scrapy.Field()
+    name = scrapy.Field()
+    score = scrapy.Field()
+    desc = scrapy.Field()
+

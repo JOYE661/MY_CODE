@@ -10,4 +10,7 @@ from itemadapter import ItemAdapter
 
 class DoubanPipeline:
     def process_item(self, item, spider):
+        # print("process_item")
+        print(f"item:{item}")
+        
         return item

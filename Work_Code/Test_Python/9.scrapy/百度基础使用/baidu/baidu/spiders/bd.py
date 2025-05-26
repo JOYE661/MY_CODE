@@ -4,7 +4,7 @@ import scrapy
 class BdSpider(scrapy.Spider):
     name = "bd"
     #爬虫名称
-    allowed_domains = ["www.baidu.com"]
+    allowed_domains = ["www.baidu.com","movie.douban.com"]
     #允许爬取的域名
     start_urls = ["https://www.baidu.com"]
     #起始URL
@@ -13,4 +13,10 @@ class BdSpider(scrapy.Spider):
     def parse(self, response):
         print("hello scrapy")
         print(response.url)
-        pass
+        url="https://movie.douban.com/top250"
+        yield scrapy.Request(url,callback=self.parse2) #请求get
+
+    
+    def parse2(self, response):
+        print("hello scrapy2")
+        print(response.url)

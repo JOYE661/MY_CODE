@@ -95,3 +95,5 @@ FEED_EXPORT_ENCODING = "utf-8"
 #————————————————————————————————————更改的配置
 ROBOTSTXT_OBEY=False
 LOG_LEVEL="ERROR"
+#用户代理
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36"
