@@ -27,7 +27,7 @@ class DbSpider(scrapy.Spider):
             #//*[@id="content"]/div/div[1]/ol/li[1]/div/div[2]/div[2]/div/span[2]
             desc=li.xpath('./div/div[2]/div[2]/p[2]/span/text()').get()
             #//*[@id="content"]/div/div[1]/ol/li[1]/div/div[2]/div[2]/p[2]/span
-            print(num, name, score, desc)
+            # print(num, name, score, desc)
 
             item["num"]=num
             item["name"]=name 

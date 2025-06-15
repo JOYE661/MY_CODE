@@ -25,17 +25,7 @@ def listorder(request):
             'customer_name',
             'medicinelist'
         ).order_by('-id')
-        ###############################过滤输出产品
-        product_names_list = []
-        for order in qs:
-            # 解析JSON字符串
-            medicines = json.loads(order['medicinelist'])
-            # 提取名称并去除空格
-            names = [med['name'].replace(' ', '') for med in medicines]
-            product_names_list.append(names)
 
-        print(product_names_list)
-        ###########################################################
         # 查看是否有 关键字 搜索 参数
         keywords = request.params.get('keywords',None)
         if keywords:
@@ -82,7 +72,7 @@ def addorder(request):
 
         new_order = Order.objects.create(name=info['name'],
             customer_id=info['customerid'],
-            # 写入json格式的药品数据到 medicinelist 字段中
+            # 写入json格式的产品数据到 medicinelist 字段中
             medicinelist=json.dumps(medicinelist,ensure_ascii=False),)
 
         batch = [OrderMedicine(order_id=new_order.id,

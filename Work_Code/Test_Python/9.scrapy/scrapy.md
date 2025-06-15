@@ -19,11 +19,10 @@ scrapy genspider NAME www.baidu.com
 
 ROBOTSTXT_OBEY=False //关闭君子协议
 
-LOG_LEVEL="EEORE"  //关闭日志---INFO WARNING
+//关闭日志---INFO WARNING
+LOG_LEVEL="ERROR"
 
 4.运行爬虫
-
-scrapy crawl NAME
 
 # scrapy组成
 
