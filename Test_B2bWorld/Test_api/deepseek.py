@@ -24,15 +24,15 @@ def printChar(text, daylay=0.1):
         time.sleep(daylay)
     print()
 
-while True:
-    myin = input("有什么问题捏：")
-    if myin == "exit":
-        print("遛了喵")
-        break
-    resp = deepseek(myin)
+# while True:
+#     myin = input("有什么问题捏：")
+#     if myin == "exit":
+#         print("遛了喵")
+#         break
+#     resp = deepseek(myin)
 
-    printChar(resp)
-    print("----------------------------------------------------------------------------------")
+#     printChar(resp)
+#     print("----------------------------------------------------------------------------------")
     
 
 
