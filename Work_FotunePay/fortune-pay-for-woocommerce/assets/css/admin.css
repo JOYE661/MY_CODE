@@ -1,0 +1,104 @@
+/* 交易查询页面样式 */
+.fortunepay-transactions {
+    max-width: 1200px;
+}
+
+.fortunepay-filters {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.filter-row label {
+    font-weight: 600;
+    min-width: 80px;
+}
+
+.filter-row input[type="text"] {
+    width: 180px;
+}
+
+.filter-row .button {
+    margin-top: 5px;
+}
+
+/* 交易表格样式 */
+#fortunepay-transactions-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#fortunepay-transactions-container th {
+    background-color: #f6f7f7;
+    border: 1px solid #c3c4c7;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+
+#fortunepay-transactions-container td {
+    border: 1px solid #c3c4c7;
+    padding: 8px 10px;
+    vertical-align: top;
+}
+
+#fortunepay-transactions-container tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#fortunepay-transactions-container .transaction-details {
+    background-color: #fff;
+    border-left: 4px solid #72aee6;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+/* 加载中样式 */
+.loading-overlay {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.loading-overlay .spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #2271b1;
+    border-radius: 50%;
+    animation: fortunepay-spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes fortunepay-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 响应式调整 */
+@media (max-width: 782px) {
+    .filter-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .filter-row label {
+        margin-bottom: 5px;
+    }
+    
+    .filter-row input[type="text"] {
+        width: 100%;
+    }
+}

@@ -1,0 +1,36 @@
+/* 手机号验证结果样式 */
+.fortunepay-form .validation-result {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.875em;
+}
+
+.fortunepay-form .validation-result.checking {
+    background-color: #f0f0f1;
+    color: #2271b1;
+}
+
+.fortunepay-form .validation-result.valid {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.fortunepay-form .validation-result.invalid,
+.fortunepay-form .validation-result.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* 支付方式选择区域 */
+.payment_method_fortunepay {
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #f6f7f7;
+}
+
+.payment_method_fortunepay .fortunepay-form {
+    margin-top: 15px;
+}

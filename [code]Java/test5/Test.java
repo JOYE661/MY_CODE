@@ -11,15 +11,15 @@ public class Test {
 		f3(f);
 
 	}
-	//¶¯Îï·¢³öÉùÒô
+	//åŠ¨ç‰©å‘å‡ºå£°éŸ³
 	public static void f1(Animal a) {
 		a.sound();
 	}
-	//³ÔµÄ¶«Î÷
+	//åƒçš„ä¸œè¥¿
 	public static void f2(Edible e) {
 		e.eat();
 	}
-	//³ÔË®¹û
+	//åƒæ°´æœ
 	public static void f3(Fruit f) {
 		f.eat();
 	}
