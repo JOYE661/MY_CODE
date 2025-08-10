@@ -1,5 +1,7 @@
 //package test3;
 
+import U2023Test.Account;
+
 public class checkingAccount extends Account{
 	private double overdraft;//可透支额度
 	//行为

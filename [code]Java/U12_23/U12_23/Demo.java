@@ -12,7 +12,7 @@ public class Demo {
 			if(i==4){	
 					t.join();
 			}
-			System.out.println("ÒµÎñÕı³£°ìÀíÖĞ£¬Ç°ÃæµÈ´ı"+i+"ÈË");
+			System.out.println("ä¸šåŠ¡æ­£å¸¸åŠç†ä¸­ï¼Œå‰é¢ç­‰å¾…"+i+"äºº");
 		}
 	}
 }

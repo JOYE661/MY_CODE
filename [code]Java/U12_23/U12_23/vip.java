@@ -4,9 +4,9 @@ public class vip implements Runnable{
 	@Override
 	public void run() {
 		synchronized (this) {
-			System.out.println("VIPΩ¯»Î£¨VIP∞Ï¿Ì÷–..........");
+			System.out.println("VIPËøõÂÖ•ÔºåVIPÂäûÁêÜ‰∏≠..........");
 			for(int i=10;i>0;i--) {
-				System.out.println(i+"√Î");
+				System.out.println(i+"Áßí");
 			}
 		}
 		

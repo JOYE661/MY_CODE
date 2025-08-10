@@ -1,5 +1,7 @@
 //package test3;
 
+import U2023Test.Account;
+
 public class savingAccount extends Account{
 	//ÐÐÎª
 	public void withDraw(double balance) {

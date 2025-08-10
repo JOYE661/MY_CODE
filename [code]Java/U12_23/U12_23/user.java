@@ -5,7 +5,7 @@ public class user implements Runnable{
 	public void run() {
 		
 			while (this.num!=0) {
-				System.out.println("ÒµÎñÕı³£°ìÀíÖĞ£¬Ç°ÃæµÈ´ı"+num+"ÈË");
+				System.out.println("ä¸šåŠ¡æ­£å¸¸åŠç†ä¸­ï¼Œå‰é¢ç­‰å¾…"+num+"äºº");
 				this.num--;
 			}
 	}
