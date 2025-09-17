@@ -26,7 +26,7 @@ logging.basicConfig(
 )
 
 # 基础目录设置
-script_dir = "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/9_11_Task1/中国氢能网/2025_News"
+script_dir = "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/9_11_Task1/中国氢能汽车网/2025_News"
 os.makedirs(script_dir, exist_ok=True)
 
 # 创建数据目录结构
@@ -251,7 +251,7 @@ async def process_news_link(context, link, page_url):#每个新闻爬取的详�
             
         # 确保链接是绝对路径
         if not href.startswith('http'):
-            href = f'http://h2.china-nengyuan.com{href}'
+            href = f'http://www.chinahv.cn{href}'
         
         # 检查新闻是否已存在
         if is_news_exists(href):
@@ -270,16 +270,16 @@ async def process_news_link(context, link, page_url):#每个新闻爬取的详�
         await news_page.goto(href, wait_until='domcontentloaded')
         
         # 获取新闻标题
-        title_element = await news_page.query_selector('h1')
+        title_element = await news_page.query_selector('.display_title h1')
         title = await title_element.inner_text() if title_element else "无标题"
         news_info['文档名称'] = title
         
         # 尝试获取发布日期
-        date_element = await news_page.query_selector('.martop')  # 根据实际页面结构调整
+        date_element = await news_page.query_selector('//*[@id="rightObj"]//span[@class="PublishedDate"]')  # 根据实际页面结构调整
         if date_element:
-            date_text = await date_element.inner_text()
+            date_text = await date_element.text_content()
             # 从文本中提取日期
-            date_match = re.search(r'\d{4}-\d{2}-\d{2}', date_text)
+            date_match = re.search(r'\d{4}-\d{1,2}-\d{1,2}', date_text)
             if date_match:
                 news_info['文档日期'] = date_match.group(0)
         
@@ -287,11 +287,13 @@ async def process_news_link(context, link, page_url):#每个新闻爬取的详�
         secondary_links = await news_page.query_selector_all('//a[normalize-space()="查看原文"]')
         if len(secondary_links) > 0:  # 至少有一个除了当前链接外的其他链接
             url = await secondary_links[0].get_attribute('href')  # 取第一个二级链接
-            news_info['是否有二级链接'] = f"http://h2.china-nengyuan.com{url}" if url and not url.startswith('http') else url
+            news_info['是否有二级链接'] = f"{url}" if url and not url.startswith('http') else url
         
         # 获取内容
-        content_cell = await news_page.query_selector('.martop')
-        full_content = await content_cell.inner_text() if content_cell else "无内容"
+        content_cell = await news_page.query_selector_all('//*[@id="info_content"]')
+        # full_content = await content_cell.inner_text() if content_cell else "无内容"
+        full_content = "\n".join([await para.inner_text() for para in content_cell]) if content_cell else "无内容"
+
         
         # 创建文档
         doc = Document()
@@ -340,9 +342,12 @@ async def process_page(context, page_url, page_num):#每个页面抓取的逻辑
     
     page = await context.new_page()
     await page.goto(page_url, wait_until='domcontentloaded')
-    
+    #await page.wait_for_selector('.TTXW_LIST', timeout=20000)
     # 获取当前页面的所有新闻链接
-    news_links = await page.query_selector_all('//table//table//h2/a[contains(@href, ".html")]')
+    # news_links = await page.query_selector_all('//div[@id="mainhome"]//div[@id="rightObj"]//div[@class="TTXW_LIST"]//a[contains(@href, "/html/")]')
+    # news_links = await page.query_selector_all('//div[@class="TTXW_LIST"]//li/a[contains(@href, ".shtml") or contains(@href, ".html")]')
+    # news_links = await page.query_selector_all('div.TTXW_LIST li a[href*=".shtml"], div.TTXW_LIST li a[href*=".html"]')
+    news_links = await page.query_selector_all('div.right div.TTXW_LIST a[href*=".html"]')
     logging.info(f"第 {page_num} 页找到 {len(news_links)} 条新闻")
     
     # 处理所有新闻链接
@@ -357,6 +362,7 @@ async def process_page(context, page_url, page_num):#每个页面抓取的逻辑
         
         # 添加随机延迟，避免请求过于频繁
         await asyncio.sleep(random.uniform(0.5, 1.5))
+        # await asyncio.sleep(3)
 
     # # 并发处理所有新闻链接，限制并发数为5避免过多请求
     # for i in range(0, len(news_results), 5):
@@ -381,17 +387,17 @@ async def main():
         context.set_default_timeout(20000)
         
         # 访问起始页面
-        start_url = 'http://h2.china-nengyuan.com/news/index.php?gopage=0&'
+        start_url = 'http://www.chinahv.cn/info/63368.html'
         
         # 获取总页数（需要根据实际网站结构调整）
-        total_pages = 5  # 示例值，实际应根据网站获取
+        total_pages = 3  # 示例值，实际应根据网站获取
         
         all_news_results = []
         new_news_count = 0
         existing_news_count = 0
         
         for page_num in range(total_pages):
-            page_url = f'http://h2.china-nengyuan.com/news/index.php?gopage={page_num}&'
+            page_url = f'http://www.chinahv.cn/info/63368.html?page={page_num}&'
             
             try:
                 news_results = await process_page(context, page_url, page_num)
