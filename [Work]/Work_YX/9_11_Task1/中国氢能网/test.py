@@ -358,11 +358,11 @@ async def process_page(context, page_url, page_num):#每个页面抓取的逻辑
         # 添加随机延迟，避免请求过于频繁
         await asyncio.sleep(random.uniform(0.5, 1.5))
 
-    # # 并发处理所有新闻链接，限制并发数为5避免过多请求
-    # for i in range(0, len(news_results), 5):
-    #     batch = news_results[i:i+5]
-    #     await asyncio.gather(*batch)
-    #     await asyncio.sleep(1)  # 批次之间短暂延迟
+    # 并发处理所有新闻链接，限制并发数为5避免过多请求
+    for i in range(0, len(news_results), 5):
+        batch = news_results[i:i+5]
+        await asyncio.gather(*batch)
+        await asyncio.sleep(1)  # 批次之间短暂延迟
 
     await page.close()
     return news_results
