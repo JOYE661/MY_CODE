@@ -350,26 +350,48 @@ async def process_page(context, page_url, page_num):#每个页面抓取的逻辑
     news_links = await page.query_selector_all('div.right div.TTXW_LIST a[href*=".html"]')
     logging.info(f"第 {page_num} 页找到 {len(news_links)} 条新闻")
     
-    # 处理所有新闻链接
-    news_results = []
+    # # 处理所有新闻链接
+    # news_results = []
+    # for link in news_links:
+    #     news_info = await process_news_link(context, link, page_url)
+    #     news_results.append(news_info)
+        
+    #     # 更新日志（跳过已存在的新闻）
+    #     if news_info['状态'] != '已存在':
+    #         update_news_log(news_info)
+        
+    #     # 添加随机延迟，避免请求过于频繁
+    #     await asyncio.sleep(random.uniform(0.5, 1.5))
+    #     # await asyncio.sleep(3)
+
+    # # # 并发处理所有新闻链接，限制并发数为5避免过多请求
+    # # for i in range(0, len(news_results), 5):
+    # #     batch = news_results[i:i+5]
+    # #     await asyncio.gather(*batch)
+    # #     await asyncio.sleep(1)  # 批次之间短暂延迟
+    # 创建异步任务列表
+    news_tasks = []
     for link in news_links:
-        news_info = await process_news_link(context, link, page_url)
-        news_results.append(news_info)
-        
-        # 更新日志（跳过已存在的新闻）
-        if news_info['状态'] != '已存在':
-            update_news_log(news_info)
-        
-        # 添加随机延迟，避免请求过于频繁
-        await asyncio.sleep(random.uniform(0.5, 1.5))
-        # await asyncio.sleep(3)
-
-    # # 并发处理所有新闻链接，限制并发数为5避免过多请求
-    # for i in range(0, len(news_results), 5):
-    #     batch = news_results[i:i+5]
-    #     await asyncio.gather(*batch)
-    #     await asyncio.sleep(1)  # 批次之间短暂延迟
-
+        # 为每个链接创建异步任务
+        task = asyncio.create_task(process_news_link(context, link, page_url))
+        news_tasks.append(task)
+    
+    # 使用信号量限制并发数为5
+    semaphore = asyncio.Semaphore(5)
+    
+    async def process_with_semaphore(task):
+        async with semaphore:
+            result = await task
+            # 更新日志（跳过已存在的新闻）
+            if result['状态'] != '已存在':
+                update_news_log(result)
+            # 添加随机延迟，避免请求过于频繁
+            await asyncio.sleep(random.uniform(0.5, 1.5))
+            return result
+    
+    # 并发处理所有新闻链接
+    news_results = await asyncio.gather(*[process_with_semaphore(task) for task in news_tasks])
+    
     await page.close()
     return news_results
 
