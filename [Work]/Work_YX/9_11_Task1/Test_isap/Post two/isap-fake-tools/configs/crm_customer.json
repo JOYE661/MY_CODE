@@ -1,0 +1,48 @@
+{
+  "fields": {
+    "customer_id": {
+      "type": "string",
+      "generator": "uuid"
+    },
+    "name": {
+      "type": "string",
+      "generator": "faker_name"
+    },
+    "gender": {
+      "type": "string",
+      "generator": "random_choice:男,女,M,F,0,1"
+    },
+    "phone": {
+      "type": "string",
+      "generator": "faker_phone_number"
+    },
+    "email": {
+      "type": "string",
+      "generator": "faker_email"
+    },
+    "birthday": {
+      "type": "string",
+      "generator": "faker_date_of_birth"
+    },
+    "address": {
+      "type": "string",
+      "generator": "faker_address"
+    },
+    "create_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "update_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "is_deleted": {
+      "type": "integer",
+      "generator": "random_choice:0,1",
+      "min": 0,
+      "max": 1
+    }
+  },
+  "relationships": {},
+  "post_process": []
+}

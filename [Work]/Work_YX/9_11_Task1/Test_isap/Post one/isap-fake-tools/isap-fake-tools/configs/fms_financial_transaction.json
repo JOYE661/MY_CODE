@@ -1,0 +1,43 @@
+{
+  "fields": {
+    "transaction_id": {
+      "type": "string",
+      "generator": "uuid"
+    },
+    "order_id": {
+      "type": "string",
+      "generator": "uuid"
+    },
+    "payment_method": {
+      "type": "string",
+      "generator": "random_choice:alipay,wechat_pay,credit_card,debit_card,cash"
+    },
+    "transaction_type": {
+      "type": "integer",
+      "generator": "random_choice:1,2",
+      "min": 1,
+      "max": 2
+    },
+    "transaction_amount": {
+      "type": "decimal",
+      "min": 0.0,
+      "max": 10000.0,
+      "precision": 2
+    },
+    "transaction_status": {
+      "type": "string",
+      "generator": "random_choice:SUCCESS,FAILED,PENDING,REFUNDED"
+    },
+    "transaction_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    }
+  },
+  "relationships": {
+    "order_id": {
+      "table": "oms_order",
+      "field": "order_id"
+    }
+  },
+  "post_process": []
+}

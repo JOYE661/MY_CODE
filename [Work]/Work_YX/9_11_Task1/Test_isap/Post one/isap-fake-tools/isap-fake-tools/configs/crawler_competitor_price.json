@@ -1,0 +1,46 @@
+{
+  "fields": {
+    "id": {
+      "type": "integer",
+      "generator": "incremental"
+    },
+    "crawl_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "platform": {
+      "type": "string",
+      "generator": "random_choice:jd.com,tmall.com,taobao.com,pinduoduo.com,suning.com"
+    },
+    "competitor_name": {
+      "type": "string",
+      "generator": "faker_company"
+    },
+    "product_name": {
+      "type": "string",
+      "generator": "faker_product_name"
+    },
+    "product_sku": {
+      "type": "string",
+      "generator": "faker_product_code"
+    },
+    "price": {
+      "type": "decimal",
+      "min": 10.0,
+      "max": 5000.0,
+      "precision": 2
+    },
+    "promotion_info": {
+      "type": "string",
+      "generator": "random_choice:满199减30,第二件半价,限时折扣,买一送一,无促销"
+    },
+    "is_in_stock": {
+      "type": "integer",
+      "generator": "random_choice:0,1",
+      "min": 0,
+      "max": 1
+    }
+  },
+  "relationships": {},
+  "post_process": []
+}
