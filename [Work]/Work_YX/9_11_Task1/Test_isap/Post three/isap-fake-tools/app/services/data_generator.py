@@ -169,7 +169,7 @@ class DataGenerator:
         insert_query = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({', '.join(placeholders)})"
         
         # 生成记录并批量插入
-        batch_size = 100
+        batch_size = 1000
         batch = []
         
         for _ in range(record_count):

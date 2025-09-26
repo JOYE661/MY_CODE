@@ -199,7 +199,7 @@ def main():
                         st.session_state.clear_confirmed = False
                         st.session_state.clear_in_progress = False
     
-    # 表结构信息
+    # 表结构信息n
     st.divider()
     st.header("📋 表结构信息")
     
