@@ -254,7 +254,8 @@ class DataGenerator:
                 record = self._apply_post_process_rule(record, rule)
         
         return record
-    
+
+
     def _generate_field_value(self, field_config: Dict, table_name: str, current_date: datetime.date) -> Any:
         """根据字段配置生成字段值"""
         field_type = field_config.get('type', 'string')
@@ -265,6 +266,50 @@ class DataGenerator:
             if field_generator == 'current_timestamp':
                 # 生成符合时间规律的时间戳
                 return self._generate_timestamp(current_date)
+            elif field_generator == 'faker_company':
+                return str(self.faker.company())
+            # elif field_generator == 'faker_product_name':
+            #     return str(self.faker.word())
+            elif field_generator == 'faker_product_code':
+                return str(self.faker.uuid4())
+            # ext_market_trend 表已解决
+            # fms_financial_transaction 表已解决
+            # ims_shipment 表专用
+            elif field_generator == 'faker_receiver_info':
+                receiver_info = {
+                    'receiver_name': self.faker.name(),
+                    'receiver_phone': self.faker.phone_number(),
+                    'receiver_email': self.faker.email(),
+                    'receiver_company': self.faker.company(),
+                    'shipping_address': {
+                        'province': self.faker.province(),
+                        'city': self.faker.city(),
+                        'district': self.faker.district(),
+                        'street': self.faker.street_address(),
+                        'postal_code': self.faker.postcode()
+                    }
+                }
+                return str(receiver_info)
+            # crm_customer 表专用
+            elif field_generator == 'faker_address':
+                return str(self.faker.address())
+            elif field_generator == 'faker_name':
+                return str(self.faker.name())
+            elif field_generator == 'faker_phone_number':
+                return str(self.faker.phone_number())
+            elif field_generator == 'faker_email':
+                return str(self.faker.email())
+            elif field_generator == 'faker_date_of_birth':
+                return str(self.faker.date_of_birth())
+            # oms_order 表专用
+            elif field_generator == 'faker_province':
+                return str(self.faker.province())
+            elif field_generator == 'faker_city':
+                return str(self.faker.city())
+            elif field_generator == 'faker_district':
+                return str(self.faker.district())
+            elif field_generator == 'faker_street_address':
+                return str(self.faker.street_address())
             elif field_generator == 'uuid':
                 return str(self.faker.uuid4())
             elif field_generator == 'incremental':

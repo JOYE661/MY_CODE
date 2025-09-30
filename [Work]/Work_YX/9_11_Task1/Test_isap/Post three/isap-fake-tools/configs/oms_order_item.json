@@ -14,7 +14,7 @@
     },
     "product_name": {
       "type": "string",
-      "generator": "faker_product_name"
+      "generator": "random_choice:苹果手机,MacBook Pro,MacBook Air,Mac Mini,Mac Pro,MacBook,iPad,iPhone,iPod,iMac,Surface,华为手机,小米手机,OPPO手机,VIVO手机,三星手机,华为Pad,小米Pad,OPPOPad,VIVOPad,SurfacePad,华硕手机,华硕Pad,戴尔手机,戴尔Pad,惠普手机,惠普Pad"
     },
     "quantity": {
       "type": "integer",

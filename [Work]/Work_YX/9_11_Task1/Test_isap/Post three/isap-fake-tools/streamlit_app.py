@@ -2,6 +2,7 @@ import streamlit as st
 import asyncio
 from datetime import datetime, timedelta, date
 import os
+import time
 from app.services.data_generator import DataGenerator
 from app.core.database import database
 from app.core.config import settings
@@ -97,10 +98,19 @@ def main():
             today
         )
         
+        # 持续生成配置
+        st.subheader("持续生成配置")
+        continuous_mode = st.checkbox("启用持续生成模式")
+        if continuous_mode:
+            interval_seconds = st.number_input("生成间隔(秒)", min_value=1, value=30)
+            records_per_batch = st.number_input("每次生成记录数", min_value=1, value=10)
+        
         # 操作按钮
         st.subheader("操作")
         generate_btn = st.button("🚀 生成数据", type="primary", use_container_width=True)
+        # generate_everyday_btn = st.button("📅 每天生成数据", use_container_width=True)
         clear_btn = st.button("🧹 清空数据", use_container_width=True)
+
     
     # 主内容区
     st.divider()
@@ -111,6 +121,10 @@ def main():
         st.session_state.clear_confirmed = False
     if 'clear_in_progress' not in st.session_state:
         st.session_state.clear_in_progress = False
+    if 'continuous_generation_active' not in st.session_state:
+        st.session_state.continuous_generation_active = False
+    if 'continuous_generation_count' not in st.session_state:
+        st.session_state.continuous_generation_count = 0
     
     # 日志显示区域
     log_container = st.container()
@@ -147,6 +161,70 @@ def main():
                     except Exception as e:
                         log(f"❌ 数据生成失败: {str(e)}")
                         st.error(f"数据生成失败: {str(e)}")
+        
+        # 持续生成数据操作
+        if continuous_mode and selected_tables:
+            start_continuous_btn = st.button("开始持续生成", type="primary", use_container_width=True)
+            stop_continuous_btn = st.button("停止持续生成", use_container_width=True)
+            
+            if start_continuous_btn:
+                st.session_state.continuous_generation_active = True
+                st.session_state.continuous_generation_count = 0
+                st.rerun()
+            
+            if stop_continuous_btn:
+                st.session_state.continuous_generation_active = False
+                st.rerun()
+            
+            # 持续生成逻辑
+            if st.session_state.continuous_generation_active:
+                log(f"开始持续生成数据，间隔 {interval_seconds} 秒，每次生成 {records_per_batch} 条记录")
+                st.info(f"持续生成进行中... 间隔 {interval_seconds} 秒，每次生成 {records_per_batch} 条记录")
+                
+                # 创建一个空容器用于显示批次数量和生成结果，避免页面闪烁
+                if 'continuous_status_container' not in st.session_state:
+                    st.session_state.continuous_status_container = st.empty()
+                
+                # 初始化上次生成时间
+                if 'last_generation_time' not in st.session_state:
+                    st.session_state.last_generation_time = time.time()
+                
+                # 在容器中显示已生成的批次数量
+                status_container = st.session_state.continuous_status_container
+                status_container.write(f"已生成批次数量: {st.session_state.continuous_generation_count}")
+                
+                # 检查是否到了生成时间
+                current_time = time.time()
+                if current_time - st.session_state.last_generation_time >= interval_seconds:
+                    try:
+                        # 为今天生成一批数据
+                        today = date.today()
+                        log(f"正在生成批次 #{st.session_state.continuous_generation_count + 1}...")
+                        
+                        # 执行数据生成（仅为今天生成records_per_batch条记录）
+                        total_records = async_runner.run(
+                            generator.generate_data_for_tables(
+                                selected_tables,
+                                records_per_batch,  # 使用每批次的记录数而不是每天的记录数
+                                today,
+                                today
+                            )
+                        )
+                        
+                        st.session_state.continuous_generation_count += 1
+                        st.session_state.last_generation_time = current_time
+                        # 更新容器中的信息
+                        status_container.write(f"已生成批次数量: {st.session_state.continuous_generation_count}")
+                        log(f"✅ 批次 #{st.session_state.continuous_generation_count} 生成完成! 生成了 {total_records} 条记录")
+                        
+                    except Exception as e:
+                        log(f"❌ 持续生成失败: {str(e)}")
+                        st.error(f"持续生成失败: {str(e)}")
+                
+                # 使用time.sleep等待下次生成，而不是刷新整个页面
+                # 这样可以避免页面闪烁，同时保持持续生成的效果
+                time.sleep(interval_seconds)
+                st.rerun()
         
         # 清空数据操作 - 使用会话状态管理确认流程
         if clear_btn and not st.session_state.clear_confirmed:
@@ -188,6 +266,8 @@ def main():
                         # 重置状态
                         st.session_state.clear_confirmed = False
                         st.session_state.clear_in_progress = False
+                        st.session_state.continuous_generation_active = False
+                        st.session_state.continuous_generation_count = 0
                         
                     except Exception as e:
                         log(f"❌ 数据清空失败: {str(e)}")
