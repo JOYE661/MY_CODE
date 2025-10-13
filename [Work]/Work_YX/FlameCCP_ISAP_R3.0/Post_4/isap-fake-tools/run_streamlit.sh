@@ -9,8 +9,16 @@ set -e
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # 打印启动信息
- echo "🚀 正在启动ISAP数据生成器控制面板..."
- echo "📁 当前工作目录: $CURRENT_DIR"
+echo "🚀 正在启动ISAP数据生成器控制面板..."
+echo "📁 当前工作目录: $CURRENT_DIR"
+echo ""
+echo "💡 提示: 这个界面是用于控制和监控数据生成的"
+echo "💡 如果需要后台持续生成数据，请使用 background_generator.py"
+echo "💡 使用方法:"
+echo "💡   一次性生成数据: python3 background_generator.py [记录数，默认100]"
+echo "💡   持续生成数据:   python3 background_generator.py continuous [间隔秒数，默认30] [每次记录数，默认10]"
+echo "💡   停止持续生成:   按 Ctrl+C"
+echo ""
 
 # 检查Python是否可用
 if ! command -v python3 &> /dev/null

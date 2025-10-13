@@ -50,4 +50,11 @@ if __name__ == "__main__":
         print("启动应用程序，数据库连接将由FastAPI的lifespan处理")
     except Exception as e:
         print(f"初始化失败: {e}")
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    # 修改运行配置以适应后台运行
+    uvicorn.run(
+        "main:app", 
+        host="0.0.0.0", 
+        port=8000, 
+        reload=False,  # 关闭重载以提高性能
+        log_level="info"  # 设置日志级别
+    )

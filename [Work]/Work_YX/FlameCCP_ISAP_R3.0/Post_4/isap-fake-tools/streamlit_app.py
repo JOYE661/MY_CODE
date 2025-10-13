@@ -1,7 +1,10 @@
 import streamlit as st
 import asyncio
-from datetime import datetime, timedelta, date
+import subprocess
 import os
+import signal
+import psutil
+from datetime import datetime, timedelta, date
 import time
 from app.services.data_generator import DataGenerator
 from app.core.database import database
@@ -37,6 +40,57 @@ def init_data_generator():
 def init_database():
     async_runner.run(database.connect())
     return database
+
+class BackgroundServiceManager:
+    @staticmethod
+    def is_service_running():
+        """检查后台服务是否正在运行"""
+        for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+            try:
+                if proc.info['cmdline'] and 'background_generator.py' in ' '.join(proc.info['cmdline']) and 'continuous' in proc.info['cmdline']:
+                    return True, proc.info['pid']
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                pass
+        return False, None
+    
+    @staticmethod
+    def start_service(interval_seconds=1, records_per_batch=1, selected_tables=None):
+        """启动后台服务"""
+        try:
+            # 构造表参数
+            if selected_tables is None or len(selected_tables) == 0:
+                table_param = "all"
+            else:
+                table_param = ",".join(selected_tables)
+            
+            # 使用nohup启动后台服务
+            cmd = [
+                'nohup', 'python3', 'background_generator.py', 
+                'continuous', str(interval_seconds), str(records_per_batch), table_param
+            ]
+            process = subprocess.Popen(
+                cmd,
+                stdout=open('background_service.log', 'a'),
+                stderr=subprocess.STDOUT,
+                preexec_fn=os.setsid
+            )
+            return True, process.pid
+        except Exception as e:
+            return False, str(e)
+    
+    @staticmethod
+    def stop_service():
+        """停止后台服务"""
+        is_running, pid = BackgroundServiceManager.is_service_running()
+        if is_running and pid:
+            try:
+                # 终止进程组
+                os.killpg(os.getpgid(pid), signal.SIGTERM)
+                time.sleep(2)  # 等待进程终止
+                return True, "后台服务已停止"
+            except Exception as e:
+                return False, f"停止服务时出错: {str(e)}"
+        return False, "后台服务未运行"
 
 # 主应用界面
 def main():
@@ -100,10 +154,70 @@ def main():
         
         # 持续生成配置
         st.subheader("持续生成配置")
-        continuous_mode = st.checkbox("启用持续生成模式")
+        continuous_mode = st.checkbox("启用页面内持续生成")
+        # 设置默认值
+        interval_seconds = 1
+        records_per_batch = 1
         if continuous_mode:
             interval_seconds = st.number_input("生成间隔(秒)", min_value=1, value=30)
             records_per_batch = st.number_input("每次生成记录数", min_value=1, value=10)
+                
+        # 后台服务控制
+        st.subheader("后台服务控制")
+        is_running, pid = BackgroundServiceManager.is_service_running()
+        if is_running:
+            st.success(f"✅ 后台服务正在运行 (PID: {pid})")
+            
+            # 添加重新启动服务的选项，允许修改参数
+            st.write("调整后台服务参数:")
+            interval_seconds = st.number_input("生成间隔(秒)", min_value=1, value=30, key="running_background_interval")
+            records_per_batch = st.number_input("每次生成记录数", min_value=1, value=10, key="running_background_records")
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                if st.button("🔄 重启后台服务"):
+                    # 先停止服务
+                    stop_success, stop_message = BackgroundServiceManager.stop_service()
+                    if stop_success:
+                        # 再启动服务，传递选定的表
+                        start_success, start_message = BackgroundServiceManager.start_service(
+                            interval_seconds, records_per_batch, selected_tables
+                        )
+                        if start_success:
+                            st.success("后台服务已重启")
+                        else:
+                            st.error(f"重启服务失败: {start_message}")
+                    else:
+                        st.error(f"停止服务失败: {stop_message}")
+                    time.sleep(1)
+                    st.rerun()
+            
+            with col2:
+                if st.button("⏹️ 停止后台服务"):
+                    success, message = BackgroundServiceManager.stop_service()
+                    if success:
+                        st.success(message)
+                    else:
+                        st.error(message)
+                    time.sleep(1)
+                    st.rerun()
+        else:
+            st.warning("⚠️ 后台服务未运行")
+            # 添加可配置的后台服务参数
+            st.write("后台服务参数设置:")
+            interval_seconds = st.number_input("生成间隔(秒)", min_value=1, value=30, key="background_interval")
+            records_per_batch = st.number_input("每次生成记录数", min_value=1, value=10, key="background_records")
+            
+            if st.button("▶️ 启动后台服务"):
+                success, message = BackgroundServiceManager.start_service(
+                    interval_seconds, records_per_batch, selected_tables
+                )
+                if success:
+                    st.success("后台服务已启动")
+                else:
+                    st.error(f"启动服务失败: {message}")
+                time.sleep(1)
+                st.rerun()
         
         # 操作按钮
         st.subheader("操作")
@@ -116,16 +230,29 @@ def main():
     st.divider()
     st.header("📈 数据生成状态")
     
+    # 显示后台服务状态
+    is_running, pid = BackgroundServiceManager.is_service_running()
+    status_col1, status_col2 = st.columns(2)
+    with status_col1:
+        if is_running:
+            st.success("✅ 后台服务正在运行")
+        else:
+            st.warning("⚠️ 后台服务未运行")
+    with status_col2:
+        if os.path.exists('background_service.log'):
+            log_size = os.path.getsize('background_service.log')
+            st.info(f"日志文件大小: {log_size} 字节")
+    
     # 初始化会话状态
     if 'clear_confirmed' not in st.session_state:
         st.session_state.clear_confirmed = False
     if 'clear_in_progress' not in st.session_state:
         st.session_state.clear_in_progress = False
-    if 'continuous_generation_active' not in st.session_state:
-        st.session_state.continuous_generation_active = False
-    if 'continuous_generation_count' not in st.session_state:
-        st.session_state.continuous_generation_count = 0
-    
+    if 'continuous_generation_active' in st.session_state:
+        del st.session_state.continuous_generation_active  # 移除旧的状态
+    if 'continuous_generation_count' in st.session_state:
+        del st.session_state.continuous_generation_count  # 移除旧的状态
+
     # 日志显示区域
     log_container = st.container()
     with log_container:
@@ -162,44 +289,45 @@ def main():
                         log(f"❌ 数据生成失败: {str(e)}")
                         st.error(f"数据生成失败: {str(e)}")
         
-        # 持续生成数据操作
+        # 持续生成数据操作 (保留给页面内的临时生成)
         if continuous_mode and selected_tables:
-            start_continuous_btn = st.button("开始持续生成", type="primary", use_container_width=True)
-            stop_continuous_btn = st.button("停止持续生成", use_container_width=True)
+            start_continuous_btn = st.button("开始持续生成(页面内)", type="primary", use_container_width=True)
+            stop_continuous_btn = st.button("停止持续生成(页面内)", use_container_width=True)
             
             if start_continuous_btn:
-                st.session_state.continuous_generation_active = True
-                st.session_state.continuous_generation_count = 0
+                st.session_state.temp_continuous_active = True
+                st.session_state.temp_continuous_count = 0
                 st.rerun()
             
             if stop_continuous_btn:
-                st.session_state.continuous_generation_active = False
+                st.session_state.temp_continuous_active = False
                 st.rerun()
             
             # 持续生成逻辑
-            if st.session_state.continuous_generation_active:
-                log(f"开始持续生成数据，间隔 {interval_seconds} 秒，每次生成 {records_per_batch} 条记录")
-                st.info(f"持续生成进行中... 间隔 {interval_seconds} 秒，每次生成 {records_per_batch} 条记录")
+            if st.session_state.get('temp_continuous_active', False):
+                log(f"开始页面内持续生成数据，间隔 {interval_seconds} 秒，每次生成 {records_per_batch} 条记录")
+                st.info(f"页面内持续生成进行中... 间隔 {interval_seconds} 秒，每次生成 {records_per_batch} 条记录")
                 
                 # 创建一个空容器用于显示批次数量和生成结果，避免页面闪烁
-                if 'continuous_status_container' not in st.session_state:
-                    st.session_state.continuous_status_container = st.empty()
+                if 'temp_continuous_status_container' not in st.session_state:
+                    st.session_state.temp_continuous_status_container = st.empty()
                 
                 # 初始化上次生成时间
-                if 'last_generation_time' not in st.session_state:
-                    st.session_state.last_generation_time = time.time()
+                if 'temp_last_generation_time' not in st.session_state:
+                    st.session_state.temp_last_generation_time = time.time()
                 
                 # 在容器中显示已生成的批次数量
-                status_container = st.session_state.continuous_status_container
-                status_container.write(f"已生成批次数量: {st.session_state.continuous_generation_count}")
+                status_container = st.session_state.temp_continuous_status_container
+                count = st.session_state.get('temp_continuous_count', 0)
+                status_container.write(f"已生成批次数量: {count}")
                 
                 # 检查是否到了生成时间
                 current_time = time.time()
-                if current_time - st.session_state.last_generation_time >= interval_seconds:
+                if current_time - st.session_state.temp_last_generation_time >= interval_seconds:
                     try:
                         # 为今天生成一批数据
                         today = date.today()
-                        log(f"正在生成批次 #{st.session_state.continuous_generation_count + 1}...")
+                        log(f"正在生成批次 #{count + 1}...")
                         
                         # 执行数据生成（仅为今天生成records_per_batch条记录）
                         total_records = async_runner.run(
@@ -211,11 +339,11 @@ def main():
                             )
                         )
                         
-                        st.session_state.continuous_generation_count += 1
-                        st.session_state.last_generation_time = current_time
+                        st.session_state.temp_continuous_count = count + 1
+                        st.session_state.temp_last_generation_time = current_time
                         # 更新容器中的信息
-                        status_container.write(f"已生成批次数量: {st.session_state.continuous_generation_count}")
-                        log(f"✅ 批次 #{st.session_state.continuous_generation_count} 生成完成! 生成了 {total_records} 条记录")
+                        status_container.write(f"已生成批次数量: {st.session_state.temp_continuous_count}")
+                        log(f"✅ 批次 #{st.session_state.temp_continuous_count} 生成完成! 生成了 {total_records} 条记录")
                         
                     except Exception as e:
                         log(f"❌ 持续生成失败: {str(e)}")
@@ -223,7 +351,7 @@ def main():
                 
                 # 使用time.sleep等待下次生成，而不是刷新整个页面
                 # 这样可以避免页面闪烁，同时保持持续生成的效果
-                time.sleep(interval_seconds)
+                time.sleep(1)
                 st.rerun()
         
         # 清空数据操作 - 使用会话状态管理确认流程
@@ -278,53 +406,53 @@ def main():
                         # 重置状态
                         st.session_state.clear_confirmed = False
                         st.session_state.clear_in_progress = False
-    
-    # 表结构信息n
-    st.divider()
-    st.header("📋 表结构信息")
-    
-    if selected_tables:
-        for table_name in selected_tables:
-            with st.expander(f"表: {table_name}"):
-                if table_name in generator.table_configs:
-                    config = generator.table_configs[table_name]
-                    
-                    # 显示字段信息
-                    st.subheader("字段列表")
-                    fields = config['fields']
-                    
-                    # 创建字段信息表格
-                    field_data = []
-                    for field_name, field_config in fields.items():
-                        field_type = field_config.get('type', '未知')
-                        generator_type = field_config.get('generator', '默认')
-                        field_data.append({
-                            "字段名": field_name,
-                            "类型": field_type,
-                            "生成器": generator_type
-                        })
-                    
-                    st.dataframe(field_data, use_container_width=True)
-                    
-                    # 显示关系信息
-                    if 'relationships' in config and config['relationships']:
-                        st.subheader("关联关系")
-                        rel_data = []
-                        for rel_field, rel_config in config['relationships'].items():
-                            rel_table = rel_config.get('table', '未知')
-                            rel_field_name = rel_config.get('field', '未知')
-                            rel_data.append({
-                                "字段": rel_field,
-                                "关联表": rel_table,
-                                "关联字段": rel_field_name
+        
+        # 表结构信息
+        st.divider()
+        st.header("📋 表结构信息")
+        
+        if selected_tables:
+            for table_name in selected_tables:
+                with st.expander(f"表: {table_name}"):
+                    if table_name in generator.table_configs:
+                        config = generator.table_configs[table_name]
+                        
+                        # 显示字段信息
+                        st.subheader("字段列表")
+                        fields = config['fields']
+                        
+                        # 创建字段信息表格
+                        field_data = []
+                        for field_name, field_config in fields.items():
+                            field_type = field_config.get('type', '未知')
+                            generator_type = field_config.get('generator', '默认')
+                            field_data.append({
+                                "字段名": field_name,
+                                "类型": field_type,
+                                "生成器": generator_type
                             })
-                        st.dataframe(rel_data, use_container_width=True)
-                    
-                    # 显示后处理规则
-                    if 'post_process' in config and config['post_process']:
-                        st.subheader("后处理规则")
-                        for rule in config['post_process']:
-                            st.text(f"类型: {rule.get('type')}, 公式: {rule.get('formula')}")
+                        
+                        st.dataframe(field_data, use_container_width=True)
+                        
+                        # 显示关系信息
+                        if 'relationships' in config and config['relationships']:
+                            st.subheader("关联关系")
+                            rel_data = []
+                            for rel_field, rel_config in config['relationships'].items():
+                                rel_table = rel_config.get('table', '未知')
+                                rel_field_name = rel_config.get('field', '未知')
+                                rel_data.append({
+                                    "字段": rel_field,
+                                    "关联表": rel_table,
+                                    "关联字段": rel_field_name
+                                })
+                            st.dataframe(rel_data, use_container_width=True)
+                        
+                        # 显示后处理规则
+                        if 'post_process' in config and config['post_process']:
+                            st.subheader("后处理规则")
+                            for rule in config['post_process']:
+                                st.text(f"类型: {rule.get('type')}, 公式: {rule.get('formula')}")
 
 # 应用退出时关闭数据库连接
 def on_app_close():
