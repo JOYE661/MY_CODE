@@ -4,6 +4,9 @@ import subprocess
 import os
 import signal
 import psutil
+import json
+import uuid
+import re
 from datetime import datetime, timedelta, date
 import time
 from app.services.data_generator import DataGenerator
@@ -40,6 +43,11 @@ def init_data_generator():
 def init_database():
     async_runner.run(database.connect())
     return database
+
+# 初始化多任务管理器
+@st.cache_resource
+def init_multi_task_manager():
+    return MultiTaskManager()
 
 class BackgroundServiceManager:
     @staticmethod
@@ -91,6 +99,189 @@ class BackgroundServiceManager:
             except Exception as e:
                 return False, f"停止服务时出错: {str(e)}"
         return False, "后台服务未运行"
+
+class MultiTaskManager:
+    def __init__(self):
+        self.tasks_file = 'logs/background_tasks.json'
+        self.load_tasks()
+    
+    def load_tasks(self):
+        """从文件加载任务列表"""
+        try:
+            if os.path.exists(self.tasks_file):
+                with open(self.tasks_file, 'r', encoding='utf-8') as f:
+                    self.tasks = json.load(f)
+            else:
+                self.tasks = []
+        except Exception:
+            self.tasks = []
+    
+    def save_tasks(self):
+        """保存任务列表到文件"""
+        try:
+            with open(self.tasks_file, 'w', encoding='utf-8') as f:
+                json.dump(self.tasks, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"保存任务列表失败: {e}")
+    
+    def get_running_tasks(self):
+        """获取所有运行中的任务"""
+        running_tasks = []
+        current_pids = set()
+        
+        # 更新任务状态
+        for task in self.tasks:
+            if task.get('status') == 'running':
+                pid = task.get('pid')
+                if pid and self.is_process_running(pid):
+                    task['status'] = 'running'
+                    current_pids.add(pid)
+                    running_tasks.append(task)
+                else:
+                    task['status'] = 'stopped'
+        
+        # 检查是否有新的进程在运行
+        for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+            try:
+                if (proc.info['cmdline'] and 
+                    'background_generator.py' in ' '.join(proc.info['cmdline']) and 
+                    'continuous' in proc.info['cmdline'] and
+                    proc.info['pid'] not in current_pids):
+                    
+                    # 提取任务信息
+                    cmdline = ' '.join(proc.info['cmdline'])
+                    task_id_match = re.search(r'task_id=([a-f0-9-]+)', cmdline)
+                    task_id = task_id_match.group(1) if task_id_match else str(uuid.uuid4())[:8]
+                    
+                    # 提取参数
+                    interval_match = re.search(r'continuous\s+(\d+)', cmdline)
+                    records_match = re.search(r'continuous\s+\d+\s+(\d+)', cmdline)
+                    tables_match = re.search(r'continuous\s+\d+\s+\d+\s+([^\s]+)', cmdline)
+                    
+                    new_task = {
+                        'task_id': task_id,
+                        'pid': proc.info['pid'],
+                        'status': 'running',
+                        'interval_seconds': int(interval_match.group(1)) if interval_match else 30,
+                        'records_per_batch': int(records_match.group(1)) if records_match else 10,
+                        'tables': tables_match.group(1).split(',') if tables_match and tables_match.group(1) != 'all' else [],
+                        'start_time': datetime.now().isoformat()
+                    }
+                    
+                    running_tasks.append(new_task)
+                    self.tasks.append(new_task)
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+                pass
+        
+        self.save_tasks()
+        return running_tasks
+    
+    def is_process_running(self, pid):
+        """检查进程是否在运行"""
+        try:
+            process = psutil.Process(pid)
+            return process.is_running()
+        except psutil.NoSuchProcess:
+            return False
+    
+    def start_task(self, interval_seconds=30, records_per_batch=10, selected_tables=None):
+        """启动一个新的后台任务"""
+        try:
+            # 生成唯一任务ID
+            task_id = str(uuid.uuid4())[:8]
+            
+            # 构造表参数
+            if selected_tables is None or len(selected_tables) == 0:
+                table_param = "all"
+            else:
+                table_param = ",".join(selected_tables)
+            
+            # 使用nohup启动后台服务，传递任务ID
+            cmd = [
+                'nohup', 'python3', 'background_generator.py', 
+                'continuous', str(interval_seconds), str(records_per_batch), table_param, task_id
+            ]
+            process = subprocess.Popen(
+                cmd,
+                stdout=open(f'logs/background_service_{task_id}.log', 'a'),
+                stderr=subprocess.STDOUT,
+                preexec_fn=os.setsid
+            )
+            
+            # 记录任务信息
+            task_info = {
+                'task_id': task_id,
+                'pid': process.pid,
+                'status': 'running',
+                'interval_seconds': interval_seconds,
+                'records_per_batch': records_per_batch,
+                'tables': selected_tables or [],
+                'start_time': datetime.now().isoformat(),
+                'log_file': f'logs/background_service_{task_id}.log'
+            }
+            
+            self.tasks.append(task_info)
+            self.save_tasks()
+            
+            return True, task_id, process.pid
+        except Exception as e:
+            return False, str(e), None
+    
+    def stop_task(self, task_id):
+        """停止指定的后台任务"""
+        try:
+            task_to_stop = None
+            for task in self.tasks:
+                if task.get('task_id') == task_id and task.get('status') == 'running':
+                    task_to_stop = task
+                    break
+            
+            if task_to_stop and task_to_stop.get('pid'):
+                pid = task_to_stop['pid']
+                try:
+                    # 终止进程组
+                    os.killpg(os.getpgid(pid), signal.SIGTERM)
+                    time.sleep(2)  # 等待进程终止
+                    
+                    # 更新任务状态
+                    task_to_stop['status'] = 'stopped'
+                    task_to_stop['end_time'] = datetime.now().isoformat()
+                    self.save_tasks()
+                    
+                    return True, f"任务 {task_id} 已停止"
+                except Exception as e:
+                    return False, f"停止任务 {task_id} 时出错: {str(e)}"
+            
+            return False, f"未找到运行中的任务 {task_id}"
+        except Exception as e:
+            return False, f"停止任务时出错: {str(e)}"
+    
+    def stop_all_tasks(self):
+        """停止所有运行中的任务"""
+        running_tasks = self.get_running_tasks()
+        results = []
+        
+        for task in running_tasks:
+            success, message = self.stop_task(task['task_id'])
+            results.append({
+                'task_id': task['task_id'],
+                'success': success,
+                'message': message
+            })
+        
+        return results
+    
+    def get_task_logs(self, task_id, lines=50):
+        """获取任务的日志内容"""
+        try:
+            log_file = f'background_service_{task_id}.log'
+            if os.path.exists(log_file):
+                with open(log_file, 'r', encoding='utf-8') as f:
+                    log_lines = f.readlines()
+                    return ''.join(log_lines[-lines:])
+            return "暂无日志"
+        except Exception as e:
+            return f"读取日志失败: {str(e)}"
 
 # 主应用界面
 def main():
@@ -161,61 +352,70 @@ def main():
         if continuous_mode:
             interval_seconds = st.number_input("生成间隔(秒)", min_value=1, value=30)
             records_per_batch = st.number_input("每次生成记录数", min_value=1, value=10)
-                
-        # 后台服务控制
-        st.subheader("后台服务控制")
-        is_running, pid = BackgroundServiceManager.is_service_running()
-        if is_running:
-            st.success(f"✅ 后台服务正在运行 (PID: {pid})")
+        
+        # 多任务后台服务控制
+        st.subheader("多任务后台服务")
+        task_manager = init_multi_task_manager()
+        
+        # 显示运行中的任务
+        running_tasks = task_manager.get_running_tasks()
+        
+        if running_tasks:
+            st.success(f"✅ 当前有 {len(running_tasks)} 个任务正在运行")
             
-            # 添加重新启动服务的选项，允许修改参数
-            st.write("调整后台服务参数:")
-            interval_seconds = st.number_input("生成间隔(秒)", min_value=1, value=30, key="running_background_interval")
-            records_per_batch = st.number_input("每次生成记录数", min_value=1, value=10, key="running_background_records")
-            
-            col1, col2 = st.columns(2)
-            with col1:
-                if st.button("🔄 重启后台服务"):
-                    # 先停止服务
-                    stop_success, stop_message = BackgroundServiceManager.stop_service()
-                    if stop_success:
-                        # 再启动服务，传递选定的表
-                        start_success, start_message = BackgroundServiceManager.start_service(
-                            interval_seconds, records_per_batch, selected_tables
-                        )
-                        if start_success:
-                            st.success("后台服务已重启")
+            # 显示每个运行中的任务
+            for task in running_tasks:
+                with st.expander(f"任务 {task['task_id']}", expanded=True):
+                    # 计算运行时长
+                    start_time = datetime.fromisoformat(task['start_time'])
+                    duration = datetime.now() - start_time
+                    hours, remainder = divmod(duration.total_seconds(), 3600)
+                    minutes, seconds = divmod(remainder, 60)
+                    
+                    st.write(f"**任务ID:** {task['task_id']}")
+                    st.write(f"**PID:** {task['pid']}")
+                    st.write(f"**运行时长:** {int(hours)}时{int(minutes)}分{int(seconds)}秒")
+                    st.write(f"**间隔:** {task['interval_seconds']}秒")
+                    st.write(f"**每批记录数:** {task['records_per_batch']}")
+                    st.write(f"**表:** {', '.join(task['tables']) if task['tables'] else '所有表'}")
+                    
+                    # 停止按钮
+                    if st.button(f"⏹️ 停止任务 {task['task_id']}", key=f"stop_{task['task_id']}"):
+                        success, message = task_manager.stop_task(task['task_id'])
+                        if success:
+                            st.success(message)
                         else:
-                            st.error(f"重启服务失败: {start_message}")
-                    else:
-                        st.error(f"停止服务失败: {stop_message}")
-                    time.sleep(1)
-                    st.rerun()
-            
-            with col2:
-                if st.button("⏹️ 停止后台服务"):
-                    success, message = BackgroundServiceManager.stop_service()
-                    if success:
-                        st.success(message)
-                    else:
-                        st.error(message)
-                    time.sleep(1)
-                    st.rerun()
+                            st.error(message)
+                        time.sleep(1)
+                        st.rerun()
         else:
-            st.warning("⚠️ 后台服务未运行")
-            # 添加可配置的后台服务参数
-            st.write("后台服务参数设置:")
-            interval_seconds = st.number_input("生成间隔(秒)", min_value=1, value=30, key="background_interval")
-            records_per_batch = st.number_input("每次生成记录数", min_value=1, value=10, key="background_records")
-            
-            if st.button("▶️ 启动后台服务"):
-                success, message = BackgroundServiceManager.start_service(
-                    interval_seconds, records_per_batch, selected_tables
-                )
-                if success:
-                    st.success("后台服务已启动")
-                else:
-                    st.error(f"启动服务失败: {message}")
+            st.warning("⚠️ 没有运行中的后台任务")
+        
+        # 启动新任务
+        st.write("启动新任务:")
+        new_task_interval = st.number_input("生成间隔(秒)", min_value=1, value=30, key="new_task_interval")
+        new_task_records = st.number_input("每次生成记录数", min_value=1, value=10, key="new_task_records")
+        
+        if st.button("▶️ 启动新后台任务"):
+            success, task_id, pid = task_manager.start_task(
+                new_task_interval, new_task_records, selected_tables
+            )
+            if success:
+                st.success(f"后台任务已启动 (任务ID: {task_id}, PID: {pid})")
+            else:
+                st.error(f"启动任务失败: {task_id}")
+            time.sleep(1)
+            st.rerun()
+        
+        # 停止所有任务按钮
+        if running_tasks:
+            if st.button("🛑 停止所有任务", type="secondary", use_container_width=True):
+                results = task_manager.stop_all_tasks()
+                for result in results:
+                    if result['success']:
+                        st.success(result['message'])
+                    else:
+                        st.error(result['message'])
                 time.sleep(1)
                 st.rerun()
         
@@ -239,8 +439,8 @@ def main():
         else:
             st.warning("⚠️ 后台服务未运行")
     with status_col2:
-        if os.path.exists('background_service.log'):
-            log_size = os.path.getsize('background_service.log')
+        if os.path.exists('logs/background_service.log'):
+            log_size = os.path.getsize('logs/background_service.log')
             st.info(f"日志文件大小: {log_size} 字节")
     
     # 初始化会话状态

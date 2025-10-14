@@ -2,6 +2,7 @@
 """
 后台数据生成服务
 这个脚本可以在后台独立运行，不依赖于浏览器
+支持多实例运行，每个实例有唯一标识符
 """
 
 import asyncio
@@ -9,6 +10,7 @@ import time
 from datetime import datetime, date
 import signal
 import sys
+import uuid
 from app.services.data_generator import DataGenerator
 from app.core.database import database
 from app.core.config import settings
@@ -67,7 +69,7 @@ class BackgroundDataGenerator:
         print(f"\n[{datetime.now()}] 🛑 收到停止信号，正在关闭...")
         self.running = False
     
-    async def run_continuous_generation(self, tables=None, interval_seconds=30, records_per_batch=10):
+    async def run_continuous_generation(self, tables=None, interval_seconds=30, records_per_batch=10, task_id=None):
         """持续生成数据"""
         # 如果没有指定表，则使用所有可用表
         if tables is None:
@@ -77,10 +79,16 @@ class BackgroundDataGenerator:
             print(f"[{datetime.now()}] ⚠️ 没有可用的表进行数据生成")
             return
         
-        print(f"[{datetime.now()}] 🚀 启动持续数据生成服务")
+        # 生成任务ID（如果未提供）
+        if task_id is None:
+            task_id = str(uuid.uuid4())[:8]
+        
+        print(f"[{datetime.now()}] 🚀 启动持续数据生成服务 (任务ID: {task_id})")
         print(f"   表: {', '.join(tables)}")
         print(f"   间隔: {interval_seconds} 秒")
         print(f"   每批记录数: {records_per_batch}")
+        print(f"   任务ID: {task_id}")
+        print(f"   日志文件: logs/background_service_{task_id}.log")
         print(f"   按 Ctrl+C 停止服务")
         
         # 设置信号处理器
@@ -172,10 +180,16 @@ async def main():
                 if table_list_str != "all":
                     tables = table_list_str.split(",")
             
+            # 获取任务ID（如果有的话）
+            task_id = None
+            if len(sys.argv) > 5:
+                task_id = sys.argv[5]
+            
             await bg_generator.run_continuous_generation(
                 tables=tables,
                 interval_seconds=interval,
-                records_per_batch=records
+                records_per_batch=records,
+                task_id=task_id
             )
         else:
             # 一次性生成模式
