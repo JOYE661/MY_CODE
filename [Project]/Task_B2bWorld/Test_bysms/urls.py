@@ -19,10 +19,13 @@ from django.contrib import admin
 from django.urls import path, include
 from sales.views import listorders1,listorders1,listorders2
 from Test_vue.views import *
+from django.views.generic import RedirectView
 # 静态文件服务
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/admin/')),
+
     path("admin/", admin.site.urls),
 
     path('sales/',include('sales.urls')),  
