@@ -1,0 +1,85 @@
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:数据库连接成功
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['oms_order', 'crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 20, 'ext_market_trend_id': 20, 'oms_order_item_id': 111}
+INFO:app.services.data_generator:开始处理日期: 2025-10-15
+INFO:app.services.data_generator:当天计划生成记录数: 10
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 oms_order 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO oms_order (order_id, order_channel, customer_code, order_amount, discount_amount, pay_amount, order_status, province, city, district, detail_address, order_time) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12), 值数量: 10
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 oms_order 已插入剩余 10 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 oms_order 生成完成，记录数: 10
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 10
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 10 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 10
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 10
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 10 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 10
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 10
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 10 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 10
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 lms_shipment 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO lms_shipment (shipment_id, order_id, carrier, sender_address, receiver_info, current_status, shipping_time, estimated_delivery, actual_delivery) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 10
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 lms_shipment 已插入剩余 10 条记录并缓存主键值
+INFO:app.services.data_generator:依赖表 lms_shipment 生成完成，记录数: 10
+INFO:app.services.data_generator:开始为依赖表 fms_financial_transaction 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO fms_financial_transaction (transaction_id, order_id, payment_method, transaction_type, transaction_amount, transaction_status, transaction_time) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 10
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 fms_financial_transaction 已插入剩余 10 条记录并缓存主键值
+INFO:app.services.data_generator:依赖表 fms_financial_transaction 生成完成，记录数: 10
+INFO:app.services.data_generator:开始为依赖表 oms_order_item 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO oms_order_item (id, order_id, product_sku, product_name, quantity, price) VALUES ($1, $2, $3, $4, $5, $6), 值数量: 10
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 oms_order_item 已插入剩余 10 条记录并缓存主键值
+INFO:app.services.data_generator:依赖表 oms_order_item 生成完成，记录数: 10
+INFO:app.services.data_generator:数据生成完成，总记录数: 70
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.core.database:数据库连接已关闭
+数据库连接URL----: postgresql://isap_admin:113RfkdsDMDb6H7T@172.16.10.196:5432/db_house
+[2025-10-15 17:26:00.157818] ✅ 成功连接到数据库: db_house
+[2025-10-15 17:26:00.157833] 🚀 启动持续数据生成服务 (任务ID: 9219e5f8)
+   表: oms_order, crawler_competitor_price, lms_shipment, crm_customer, fms_financial_transaction, ext_market_trend, oms_order_item
+   间隔: 30 秒
+   每批记录数: 10
+   任务ID: 9219e5f8
+   日志文件: logs/background_service_9219e5f8.log
+   按 Ctrl+C 停止服务
+[2025-10-15 17:26:00.157849] 📦 开始生成第 1 批数据...
+[2025-10-15 17:26:01.626352] 📦 生成了 70 条记录
+[2025-10-15 17:26:01.626374] ✅ 第 1 批数据生成完成
+[2025-10-15 17:26:01.626379] ⏱️ 等待 30 秒后继续...
+
+[2025-10-15 17:26:08.273885] 🛑 收到停止信号，正在关闭...
+[2025-10-15 17:26:08.634406] 🛑 持续数据生成服务已停止
+[2025-10-15 17:26:08.702382] 🔌 已断开数据库连接

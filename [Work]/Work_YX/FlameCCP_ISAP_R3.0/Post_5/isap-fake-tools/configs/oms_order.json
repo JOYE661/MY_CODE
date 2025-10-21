@@ -1,0 +1,76 @@
+{
+  "fields": {
+    "order_id": {
+      "type": "string",
+      "generator": "uuid"
+    },
+    "order_channel": {
+      "type": "string",
+      "generator": "random_choice:小程序,线下店,官网,APP"
+    },
+    "customer_code": {
+      "type": "string",
+      "generator": "foreign_key"
+    },
+    "order_amount": {
+      "type": "decimal",
+      "min": 10.0,
+      "max": 10000.0,
+      "precision": 2
+    },
+    "discount_amount": {
+      "type": "decimal",
+      "min": 0.0,
+      "max": 1000.0,
+      "precision": 2
+    },
+    "pay_amount": {
+      "type": "decimal",
+      "min": 0.0,
+      "max": 10000.0,
+      "precision": 2
+    },
+    "order_status": {
+      "type": "integer",
+      "generator": "random_choice:1,2,3,4,5",
+      "min": 1,
+      "max": 5
+    },
+    "province": {
+      "type": "string",
+      "generator": "faker_province"
+    },
+    "city": {
+      "type": "string",
+      "generator": "faker_city"
+    },
+    "district": {
+      "type": "string",
+      "generator": "faker_district"
+    },
+    "detail_address": {
+      "type": "string",
+      "generator": "faker_street_address"
+    },
+    "order_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    }
+  },
+  "relationships": {
+    "customer_code": {
+      "table": "crm_customer",
+      "field": "customer_id"
+    }
+  },
+  "post_process": [
+    {
+      "type": "calculate",
+      "formula": "order_amount - discount_amount"
+    },
+    {
+      "type": "address_standardization",
+      "fields": ["province", "city", "district"]
+    }
+  ]
+}

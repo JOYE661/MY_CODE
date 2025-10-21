@@ -1,0 +1,2395 @@
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:数据库连接成功
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361091, 'ext_market_trend_id': 361091, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361092, 'ext_market_trend_id': 361092, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361093, 'ext_market_trend_id': 361093, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361094, 'ext_market_trend_id': 361094, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361095, 'ext_market_trend_id': 361095, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361096, 'ext_market_trend_id': 361096, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361097, 'ext_market_trend_id': 361097, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361098, 'ext_market_trend_id': 361098, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361099, 'ext_market_trend_id': 361099, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361100, 'ext_market_trend_id': 361100, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361101, 'ext_market_trend_id': 361101, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361102, 'ext_market_trend_id': 361102, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361103, 'ext_market_trend_id': 361103, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361104, 'ext_market_trend_id': 361104, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361105, 'ext_market_trend_id': 361105, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361106, 'ext_market_trend_id': 361106, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361107, 'ext_market_trend_id': 361107, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361108, 'ext_market_trend_id': 361108, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361109, 'ext_market_trend_id': 361109, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361110, 'ext_market_trend_id': 361110, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361111, 'ext_market_trend_id': 361111, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361112, 'ext_market_trend_id': 361112, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361113, 'ext_market_trend_id': 361113, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361114, 'ext_market_trend_id': 361114, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+数据库连接URL----: postgresql://isap_admin:113RfkdsDMDb6H7T@172.16.10.196:5432/db_house
+[2025-10-21 16:24:44.129383] ✅ 成功连接到数据库: db_house
+[2025-10-21 16:24:44.129395] 🚀 启动持续数据生成服务 (任务ID: 99b0ae5c)
+   表: oms_order, crawler_competitor_price, lms_shipment, crm_customer, fms_financial_transaction, ext_market_trend, oms_order_item
+   间隔: 1 秒
+   每批记录数: 1
+   任务ID: 99b0ae5c
+   日志文件: logs/background_service_99b0ae5c.log
+   按 Ctrl+C 停止服务
+[2025-10-21 16:24:44.129407] 📦 开始生成第 1 批数据...
+[2025-10-21 16:24:44.488067] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:44.488083] ⚠️ 第 1 批数据生成失败
+[2025-10-21 16:24:44.488085] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:45.489343] 📦 开始生成第 2 批数据...
+[2025-10-21 16:24:45.731077] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:45.731101] ⚠️ 第 2 批数据生成失败
+[2025-10-21 16:24:45.731105] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:46.732238] 📦 开始生成第 3 批数据...
+[2025-10-21 16:24:47.749010] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:47.749043] ⚠️ 第 3 批数据生成失败
+[2025-10-21 16:24:47.749051] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:48.750183] 📦 开始生成第 4 批数据...
+[2025-10-21 16:24:49.129203] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:49.129242] ⚠️ 第 4 批数据生成失败
+[2025-10-21 16:24:49.129251] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:50.130491] 📦 开始生成第 5 批数据...
+[2025-10-21 16:24:50.457203] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:50.457225] ⚠️ 第 5 批数据生成失败
+[2025-10-21 16:24:50.457230] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:51.458365] 📦 开始生成第 6 批数据...
+[2025-10-21 16:24:51.531901] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:51.531924] ⚠️ 第 6 批数据生成失败
+[2025-10-21 16:24:51.531929] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:52.533095] 📦 开始生成第 7 批数据...
+[2025-10-21 16:24:52.648261] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:52.648292] ⚠️ 第 7 批数据生成失败
+[2025-10-21 16:24:52.648297] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:53.649158] 📦 开始生成第 8 批数据...
+[2025-10-21 16:24:53.861594] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:53.861614] ⚠️ 第 8 批数据生成失败
+[2025-10-21 16:24:53.861617] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:54.863023] 📦 开始生成第 9 批数据...
+[2025-10-21 16:24:55.103975] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:55.104000] ⚠️ 第 9 批数据生成失败
+[2025-10-21 16:24:55.104005] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:56.105152] 📦 开始生成第 10 批数据...
+[2025-10-21 16:24:56.185357] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:56.185392] ⚠️ 第 10 批数据生成失败
+[2025-10-21 16:24:56.185400] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:57.186629] 📦 开始生成第 11 批数据...
+[2025-10-21 16:24:57.320566] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:57.320604] ⚠️ 第 11 批数据生成失败
+[2025-10-21 16:24:57.320612] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:58.321764] 📦 开始生成第 12 批数据...
+[2025-10-21 16:24:58.595578] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:58.595598] ⚠️ 第 12 批数据生成失败
+[2025-10-21 16:24:58.595601] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:24:59.596770] 📦 开始生成第 13 批数据...
+[2025-10-21 16:24:59.713046] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:24:59.713081] ⚠️ 第 13 批数据生成失败
+[2025-10-21 16:24:59.713089] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:00.713821] 📦 开始生成第 14 批数据...
+[2025-10-21 16:25:01.076742] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:01.076772] ⚠️ 第 14 批数据生成失败
+[2025-10-21 16:25:01.076781] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:02.077463] 📦 开始生成第 15 批数据...
+[2025-10-21 16:25:02.184350] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:02.184375] ⚠️ 第 15 批数据生成失败
+[2025-10-21 16:25:02.184380] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:03.185525] 📦 开始生成第 16 批数据...
+[2025-10-21 16:25:03.335583] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:03.335616] ⚠️ 第 16 批数据生成失败
+[2025-10-21 16:25:03.335624] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:04.336426] 📦 开始生成第 17 批数据...
+[2025-10-21 16:25:04.402287] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:04.402312] ⚠️ 第 17 批数据生成失败
+[2025-10-21 16:25:04.402317] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:05.403701] 📦 开始生成第 18 批数据...
+[2025-10-21 16:25:05.462167] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:05.462189] ⚠️ 第 18 批数据生成失败
+[2025-10-21 16:25:05.462193] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:06.463380] 📦 开始生成第 19 批数据...
+[2025-10-21 16:25:06.714134] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:06.714165] ⚠️ 第 19 批数据生成失败
+[2025-10-21 16:25:06.714173] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:07.714832] 📦 开始生成第 20 批数据...
+[2025-10-21 16:25:08.184750] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:08.184781] ⚠️ 第 20 批数据生成失败
+[2025-10-21 16:25:08.184789] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:09.185912] 📦 开始生成第 21 批数据...
+[2025-10-21 16:25:09.301942] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:09.301974] ⚠️ 第 21 批数据生成失败
+[2025-10-21 16:25:09.301982] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:10.303156] 📦 开始生成第 22 批数据...
+[2025-10-21 16:25:10.370339] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:10.370362] ⚠️ 第 22 批数据生成失败
+[2025-10-21 16:25:10.370367] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:11.371379] 📦 开始生成第 23 批数据...
+[2025-10-21 16:25:11.673480] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:11.673515] ⚠️ 第 23 批数据生成失败
+[2025-10-21 16:25:11.673523] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:12.674649] 📦 开始生成第 24 批数据...
+[2025-10-21 16:25:12.750624] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:12.750657] ⚠️ 第 24 批数据生成失败INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361115, 'ext_market_trend_id': 361115, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361116, 'ext_market_trend_id': 361116, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361117, 'ext_market_trend_id': 361117, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361118, 'ext_market_trend_id': 361118, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361119, 'ext_market_trend_id': 361119, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361120, 'ext_market_trend_id': 361120, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361121, 'ext_market_trend_id': 361121, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361122, 'ext_market_trend_id': 361122, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361123, 'ext_market_trend_id': 361123, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361124, 'ext_market_trend_id': 361124, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361125, 'ext_market_trend_id': 361125, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361126, 'ext_market_trend_id': 361126, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361127, 'ext_market_trend_id': 361127, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361128, 'ext_market_trend_id': 361128, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 361129, 'ext_market_trend_id': 361129, 'oms_order_item_id': 361182}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crawler_competitor_price (id, crawl_time, platform, competitor_name, product_name, product_sku, price, promotion_info, is_in_stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crawler_competitor_price 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crawler_competitor_price 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 crm_customer 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO crm_customer (customer_id, name, gender, phone, email, birthday, address, create_time, update_time, is_deleted) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 crm_customer 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 crm_customer 生成完成，记录数: 1
+INFO:app.services.data_generator:开始为独立表 ext_market_trend 生成数据
+INFO:app.core.database:批量执行SQL，查询: INSERT INTO ext_market_trend (id, period, region, category, market_size, growth_rate, data_source) VALUES ($1, $2, $3, $4, $5, $6, $7), 值数量: 1
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:批量执行SQL完成
+INFO:app.services.data_generator:表 ext_market_trend 已插入剩余 1 条记录并缓存主键值
+INFO:app.services.data_generator:独立表 ext_market_trend 生成完成，记录数: 1
+INFO:app.services.data_generator:=== 阶段2：生成依赖表 ===
+INFO:app.services.data_generator:表依赖排序结果: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:排序后的依赖表: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:开始为依赖表 oms_order 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: cannot access local variable 'province' where it is not associated with a value
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 129, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 184, in _generate_table_data
+    record = self._generate_record(config, table_name, current_date)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 256, in _generate_record
+    record[field_name] = self._generate_field_value(field_config_with_name, table_name, current_date)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 317, in _generate_field_value
+    city = random.choice(list(pca_data[province].keys()))
+                                       ^^^^^^^^
+UnboundLocalError: cannot access local variable 'province' where it is not associated with a value
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.core.database:数据库连接已关闭
+
+[2025-10-21 16:25:12.750796] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:13.751985] 📦 开始生成第 25 批数据...
+[2025-10-21 16:25:14.487076] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:14.487110] ⚠️ 第 25 批数据生成失败
+[2025-10-21 16:25:14.487118] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:15.488303] 📦 开始生成第 26 批数据...
+[2025-10-21 16:25:15.579053] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:15.579092] ⚠️ 第 26 批数据生成失败
+[2025-10-21 16:25:15.579101] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:16.580246] 📦 开始生成第 27 批数据...
+[2025-10-21 16:25:17.137561] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:17.137599] ⚠️ 第 27 批数据生成失败
+[2025-10-21 16:25:17.137607] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:18.138796] 📦 开始生成第 28 批数据...
+[2025-10-21 16:25:18.581695] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:18.581727] ⚠️ 第 28 批数据生成失败
+[2025-10-21 16:25:18.581735] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:19.582889] 📦 开始生成第 29 批数据...
+[2025-10-21 16:25:19.748772] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:19.748808] ⚠️ 第 29 批数据生成失败
+[2025-10-21 16:25:19.748817] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:20.749999] 📦 开始生成第 30 批数据...
+[2025-10-21 16:25:20.858287] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:20.858303] ⚠️ 第 30 批数据生成失败
+[2025-10-21 16:25:20.858307] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:21.859472] 📦 开始生成第 31 批数据...
+[2025-10-21 16:25:21.933156] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:21.933178] ⚠️ 第 31 批数据生成失败
+[2025-10-21 16:25:21.933182] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:22.934296] 📦 开始生成第 32 批数据...
+[2025-10-21 16:25:23.115642] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:23.115670] ⚠️ 第 32 批数据生成失败
+[2025-10-21 16:25:23.115677] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:24.116886] 📦 开始生成第 33 批数据...
+[2025-10-21 16:25:24.218754] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:24.218775] ⚠️ 第 33 批数据生成失败
+[2025-10-21 16:25:24.218779] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:25.219947] 📦 开始生成第 34 批数据...
+[2025-10-21 16:25:25.605703] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:25.605741] ⚠️ 第 34 批数据生成失败
+[2025-10-21 16:25:25.605749] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:26.606885] 📦 开始生成第 35 批数据...
+[2025-10-21 16:25:27.176330] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:27.176357] ⚠️ 第 35 批数据生成失败
+[2025-10-21 16:25:27.176365] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:28.177870] 📦 开始生成第 36 批数据...
+[2025-10-21 16:25:28.389590] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:28.389624] ⚠️ 第 36 批数据生成失败
+[2025-10-21 16:25:28.389633] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:29.390811] 📦 开始生成第 37 批数据...
+[2025-10-21 16:25:29.792987] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:29.793014] ⚠️ 第 37 批数据生成失败
+[2025-10-21 16:25:29.793018] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:30.794216] 📦 开始生成第 38 批数据...
+[2025-10-21 16:25:31.129648] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:31.129683] ⚠️ 第 38 批数据生成失败
+[2025-10-21 16:25:31.129691] ⏱️ 等待 1 秒后继续...
+[2025-10-21 16:25:32.130017] 📦 开始生成第 39 批数据...
+[2025-10-21 16:25:32.194240] ❌ 数据生成失败: cannot access local variable 'province' where it is not associated with a value
+[2025-10-21 16:25:32.194269] ⚠️ 第 39 批数据生成失败
+[2025-10-21 16:25:32.194275] ⏱️ 等待 1 秒后继续...
+
+[2025-10-21 16:25:33.140805] 🛑 收到停止信号，正在关闭...
+[2025-10-21 16:25:33.195542] 🛑 持续数据生成服务已停止
+[2025-10-21 16:25:33.205173] 🔌 已断开数据库连接

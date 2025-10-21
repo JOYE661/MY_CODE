@@ -1,0 +1,291 @@
+[
+  {
+    "task_id": "b7bdbf05",
+    "pid": 57436,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-14T10:39:19.653964",
+    "log_file": "logs/background_service_b7bdbf05.log",
+    "end_time": "2025-10-14T10:41:17.502150"
+  },
+  {
+    "task_id": "2b59e582",
+    "pid": 57469,
+    "status": "stopped",
+    "interval_seconds": 10,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "lms_shipment"
+    ],
+    "start_time": "2025-10-14T10:39:38.042516",
+    "log_file": "logs/background_service_2b59e582.log",
+    "end_time": "2025-10-14T10:41:19.504450"
+  },
+  {
+    "task_id": "d220850d",
+    "pid": 58177,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-14T10:45:12.981221",
+    "log_file": "logs/background_service_d220850d.log",
+    "end_time": "2025-10-14T10:47:32.356420"
+  },
+  {
+    "task_id": "6209c84d",
+    "pid": 58364,
+    "status": "stopped",
+    "interval_seconds": 30,
+    "records_per_batch": 10,
+    "tables": [
+      "crawler_competitor_price",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-14T10:46:42.993721",
+    "log_file": "logs/background_service_6209c84d.log",
+    "end_time": "2025-10-14T10:47:34.360799"
+  },
+  {
+    "task_id": "9219e5f8",
+    "pid": 73636,
+    "status": "stopped",
+    "interval_seconds": 30,
+    "records_per_batch": 10,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-15T17:25:59.856739",
+    "log_file": "logs/background_service_9219e5f8.log",
+    "end_time": "2025-10-15T17:26:10.278991"
+  },
+  {
+    "task_id": "a6872d6a",
+    "pid": 75888,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-15T17:40:00.212463",
+    "log_file": "logs/background_service_a6872d6a.log",
+    "end_time": "2025-10-15T17:40:50.687407"
+  },
+  {
+    "task_id": "36a5ce08",
+    "pid": 60677,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T14:20:06.981103",
+    "log_file": "logs/background_service_36a5ce08.log",
+    "end_time": "2025-10-21T14:23:03.660679"
+  },
+  {
+    "task_id": "99b0ae5c",
+    "pid": 82963,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T16:24:43.917379",
+    "log_file": "logs/background_service_99b0ae5c.log",
+    "end_time": "2025-10-21T16:25:35.145825"
+  },
+  {
+    "task_id": "b1251c52",
+    "pid": 84548,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T16:30:00.242953",
+    "log_file": "logs/background_service_b1251c52.log",
+    "end_time": "2025-10-21T16:30:36.087411"
+  },
+  {
+    "task_id": "80a7e5ea",
+    "pid": 85102,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T16:35:01.819639",
+    "log_file": "logs/background_service_80a7e5ea.log",
+    "end_time": "2025-10-21T16:35:32.981550"
+  },
+  {
+    "task_id": "86b7be80",
+    "pid": 86754,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T16:44:26.445627",
+    "log_file": "logs/background_service_86b7be80.log",
+    "end_time": "2025-10-21T16:44:50.500459"
+  },
+  {
+    "task_id": "97ae771b",
+    "pid": 87806,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T16:48:26.698380",
+    "log_file": "logs/background_service_97ae771b.log",
+    "end_time": "2025-10-21T16:51:06.800004"
+  },
+  {
+    "task_id": "4b515a48",
+    "pid": 90424,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T17:05:59.052184",
+    "log_file": "logs/background_service_4b515a48.log",
+    "end_time": "2025-10-21T17:06:27.218207"
+  },
+  {
+    "task_id": "3298c454",
+    "pid": 91343,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T17:07:37.449872",
+    "log_file": "logs/background_service_3298c454.log",
+    "end_time": "2025-10-21T17:09:51.289288"
+  },
+  {
+    "task_id": "79361b63",
+    "pid": 93447,
+    "status": "stopped",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T17:19:45.733932",
+    "log_file": "logs/background_service_79361b63.log",
+    "end_time": "2025-10-21T17:27:22.502187"
+  },
+  {
+    "task_id": "fc326c00",
+    "pid": 3130,
+    "status": "running",
+    "interval_seconds": 1,
+    "records_per_batch": 1,
+    "tables": [
+      "oms_order",
+      "crawler_competitor_price",
+      "lms_shipment",
+      "crm_customer",
+      "fms_financial_transaction",
+      "ext_market_trend",
+      "oms_order_item"
+    ],
+    "start_time": "2025-10-21T18:34:31.557051",
+    "log_file": "logs/background_service_fc326c00.log"
+  }
+]
