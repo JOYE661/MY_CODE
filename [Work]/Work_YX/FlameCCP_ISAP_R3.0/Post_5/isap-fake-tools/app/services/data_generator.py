@@ -318,7 +318,7 @@ class DataGenerator:
                     'receiver_phone': self.faker.phone_number(),
                     'receiver_email': self.faker.email(),
                     'receiver_company': self.faker.company(),
-                    'shipping_address': str(pca_values['full_address']),
+                    'shipping_address': self.faker.address(),
                     # 'shipping_address': {
                     #     'province': str(pca_values['province']),
                     #     'city': str(pca_values['city']),
