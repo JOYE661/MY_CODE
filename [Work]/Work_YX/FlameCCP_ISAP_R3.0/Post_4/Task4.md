@@ -21,6 +21,10 @@
 
     编辑 docker-compose.yml中的  tag
 
+    podman-compose down
+
     再执行 podman-compose up -d
+
+http://172.16.10.191:8501
 
 6，pytest测试框架的学习

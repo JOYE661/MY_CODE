@@ -1,0 +1,941 @@
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:数据库连接成功
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.services.data_generator:开始 generate_data_for_tables 方法
+INFO:app.services.data_generator:独立表（阶段1）: ['crawler_competitor_price', 'crm_customer', 'ext_market_trend']
+INFO:app.services.data_generator:依赖表（阶段2）: ['oms_order', 'lms_shipment', 'fms_financial_transaction', 'oms_order_item']
+INFO:app.services.data_generator:初始化数据库计数器
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM crawler_competitor_price, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM ext_market_trend, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.core.database:执行查询: SELECT MAX(id) FROM oms_order_item, 参数: ()
+INFO:app.core.database:连接数据库: 172.16.10.196:5432/db_house
+INFO:app.core.database:查询执行成功
+INFO:app.services.data_generator:计数器初始化完成: {'crawler_competitor_price_id': 0, 'ext_market_trend_id': 0, 'oms_order_item_id': 0}
+INFO:app.services.data_generator:开始处理日期: 2025-10-21
+INFO:app.services.data_generator:当天计划生成记录数: 1
+INFO:app.services.data_generator:已清空外键缓存
+INFO:app.services.data_generator:=== 阶段1：生成独立表 ===
+INFO:app.services.data_generator:开始为独立表 crawler_competitor_price 生成数据
+ERROR:app.services.data_generator:generate_data_for_tables 方法执行失败: type object 'Faker' has no attribute 'street_address'
+ERROR:app.services.data_generator:错误详情: Traceback (most recent call last):
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 113, in generate_data_for_tables
+    table_records = await self._generate_table_data(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 183, in _generate_table_data
+    pca_values = self._generate_pca_values()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/FlameCCP_ISAP_R3.0/Post_5/isap-fake-tools/app/services/data_generator.py", line 284, in _generate_pca_values
+    detail_address = Faker.street_address()
+                     ^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Faker' has no attribute 'street_address'
+
+INFO:app.services.data_generator:退出 generate_data_for_tables 方法
+INFO:app.core.database:数据库连接已关闭
+数据库连接URL----: postgresql://isap_admin:113RfkdsDMDb6H7T@172.16.10.196:5432/db_house
+[2025-10-21 17:05:59.260022] ✅ 成功连接到数据库: db_house
+[2025-10-21 17:05:59.260035] 🚀 启动持续数据生成服务 (任务ID: 4b515a48)
+   表: oms_order, crawler_competitor_price, lms_shipment, crm_customer, fms_financial_transaction, ext_market_trend, oms_order_item
+   间隔: 1 秒
+   每批记录数: 1
+   任务ID: 4b515a48
+   日志文件: logs/background_service_4b515a48.log
+   按 Ctrl+C 停止服务
+[2025-10-21 17:05:59.260051] 📦 开始生成第 1 批数据...
+[2025-10-21 17:05:59.298123] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:05:59.298132] ⚠️ 第 1 批数据生成失败
+[2025-10-21 17:05:59.298134] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:00.299403] 📦 开始生成第 2 批数据...
+[2025-10-21 17:06:00.316823] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:00.316835] ⚠️ 第 2 批数据生成失败
+[2025-10-21 17:06:00.316837] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:01.318001] 📦 开始生成第 3 批数据...
+[2025-10-21 17:06:01.334061] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:01.334086] ⚠️ 第 3 批数据生成失败
+[2025-10-21 17:06:01.334091] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:02.335198] 📦 开始生成第 4 批数据...
+[2025-10-21 17:06:02.351563] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:02.351582] ⚠️ 第 4 批数据生成失败
+[2025-10-21 17:06:02.351586] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:03.352844] 📦 开始生成第 5 批数据...
+[2025-10-21 17:06:03.373262] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:03.373293] ⚠️ 第 5 批数据生成失败
+[2025-10-21 17:06:03.373298] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:04.374512] 📦 开始生成第 6 批数据...
+[2025-10-21 17:06:04.397187] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:04.397211] ⚠️ 第 6 批数据生成失败
+[2025-10-21 17:06:04.397215] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:05.398397] 📦 开始生成第 7 批数据...
+[2025-10-21 17:06:05.413083] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:05.413091] ⚠️ 第 7 批数据生成失败
+[2025-10-21 17:06:05.413092] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:06.414205] 📦 开始生成第 8 批数据...
+[2025-10-21 17:06:06.428342] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:06.428354] ⚠️ 第 8 批数据生成失败
+[2025-10-21 17:06:06.428356] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:07.429512] 📦 开始生成第 9 批数据...
+[2025-10-21 17:06:07.450767] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:07.450790] ⚠️ 第 9 批数据生成失败
+[2025-10-21 17:06:07.450793] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:08.451962] 📦 开始生成第 10 批数据...
+[2025-10-21 17:06:08.492838] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:08.492863] ⚠️ 第 10 批数据生成失败
+[2025-10-21 17:06:08.492867] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:09.494018] 📦 开始生成第 11 批数据...
+[2025-10-21 17:06:09.540490] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:09.540518] ⚠️ 第 11 批数据生成失败
+[2025-10-21 17:06:09.540523] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:10.541626] 📦 开始生成第 12 批数据...
+[2025-10-21 17:06:10.588454] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:10.588464] ⚠️ 第 12 批数据生成失败
+[2025-10-21 17:06:10.588466] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:11.589585] 📦 开始生成第 13 批数据...
+[2025-10-21 17:06:11.636967] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:11.636995] ⚠️ 第 13 批数据生成失败
+[2025-10-21 17:06:11.637000] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:12.638113] 📦 开始生成第 14 批数据...
+[2025-10-21 17:06:12.688721] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:12.688742] ⚠️ 第 14 批数据生成失败
+[2025-10-21 17:06:12.688747] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:13.689924] 📦 开始生成第 15 批数据...
+[2025-10-21 17:06:13.736226] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:13.736245] ⚠️ 第 15 批数据生成失败
+[2025-10-21 17:06:13.736250] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:14.737363] 📦 开始生成第 16 批数据...
+[2025-10-21 17:06:14.787568] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:14.787602] ⚠️ 第 16 批数据生成失败
+[2025-10-21 17:06:14.787607] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:15.788753] 📦 开始生成第 17 批数据...
+[2025-10-21 17:06:15.833531] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:15.833555] ⚠️ 第 17 批数据生成失败
+[2025-10-21 17:06:15.833559] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:16.834734] 📦 开始生成第 18 批数据...
+[2025-10-21 17:06:16.880437] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:16.880451] ⚠️ 第 18 批数据生成失败
+[2025-10-21 17:06:16.880455] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:17.881584] 📦 开始生成第 19 批数据...
+[2025-10-21 17:06:17.929849] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:17.929876] ⚠️ 第 19 批数据生成失败
+[2025-10-21 17:06:17.929880] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:18.930488] 📦 开始生成第 20 批数据...
+[2025-10-21 17:06:18.980671] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:18.980696] ⚠️ 第 20 批数据生成失败
+[2025-10-21 17:06:18.980701] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:19.981864] 📦 开始生成第 21 批数据...
+[2025-10-21 17:06:20.026921] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:20.026946] ⚠️ 第 21 批数据生成失败
+[2025-10-21 17:06:20.026952] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:21.027217] 📦 开始生成第 22 批数据...
+[2025-10-21 17:06:21.078126] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:21.078152] ⚠️ 第 22 批数据生成失败
+[2025-10-21 17:06:21.078158] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:22.078927] 📦 开始生成第 23 批数据...
+[2025-10-21 17:06:22.123622] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:22.123643] ⚠️ 第 23 批数据生成失败
+[2025-10-21 17:06:22.123646] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:23.124802] 📦 开始生成第 24 批数据...
+[2025-10-21 17:06:23.170961] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:23.170979] ⚠️ 第 24 批数据生成失败
+[2025-10-21 17:06:23.170983] ⏱️ 等待 1 秒后继续...
+[2025-10-21 17:06:24.172107] 📦 开始生成第 25 批数据...
+[2025-10-21 17:06:24.220650] ❌ 数据生成失败: type object 'Faker' has no attribute 'street_address'
+[2025-10-21 17:06:24.220673] ⚠️ 第 25 批数据生成失败
+[2025-10-21 17:06:24.220677] ⏱️ 等待 1 秒后继续...
+
+[2025-10-21 17:06:25.213200] 🛑 收到停止信号，正在关闭...
+[2025-10-21 17:06:25.221704] 🛑 持续数据生成服务已停止
+[2025-10-21 17:06:25.258434] 🔌 已断开数据库连接

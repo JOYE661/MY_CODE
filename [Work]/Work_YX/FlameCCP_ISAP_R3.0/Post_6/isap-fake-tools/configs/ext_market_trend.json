@@ -1,0 +1,39 @@
+{
+  "fields": {
+    "id": {
+      "type": "integer",
+      "generator": "incremental"
+    },
+    "period": {
+      "type": "string",
+      "generator": "random_choice:2023-Q1,2023-Q2,2023-Q3,2023-Q4,2024-Q1,2024-Q2"
+    },
+    "region": {
+      "type": "string",
+      "generator": "random_choice:华东,华北,华南,西南,西北,东北,中部"
+    },
+    "category": {
+      "type": "string",
+      "generator": "random_choice:苹果手机,MacBook Pro,MacBook Air,Mac Mini,Mac Pro,MacBook,iPad,iPhone,iPod,iMac,Surface,华为手机,小米手机,OPPO手机,VIVO手机,三星手机,华为Pad,小米Pad,OPPOPad,VIVOPad,SurfacePad,华硕手机,华硕Pad,戴尔手机,戴尔Pad,惠普手机,惠普Pad"
+
+    },
+    "market_size": {
+      "type": "decimal",
+      "min": 1000000.0,
+      "max": 100000000.0,
+      "precision": 2
+    },
+    "growth_rate": {
+      "type": "decimal",
+      "min": -10.0,
+      "max": 50.0,
+      "precision": 2
+    },
+    "data_source": {
+      "type": "string",
+      "generator": "random_choice:艾瑞咨询,易观分析,QuestMobile,Counterpoint,IDC,Canalys"
+    }
+  },
+  "relationships": {},
+  "post_process": []
+}
