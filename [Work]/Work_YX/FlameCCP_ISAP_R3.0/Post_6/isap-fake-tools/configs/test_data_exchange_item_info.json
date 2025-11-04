@@ -1,0 +1,153 @@
+{
+  "fields": {
+    "id": {
+      "type": "bigint",
+      "generator": "incremental"
+    },
+    "sxbh": {
+      "type": "string",
+      "generator": "format:SX{date:yyyyMMdd}{random:6}"
+    },
+    "sxmd": {
+      "type": "string",
+      "generator": "random_choice:咨询,建议,申诉,求决"
+    },
+    "bt": {
+      "type": "string",
+      "generator": "format:{sxxs}事项-{name}-{wtsd}问题"
+    },
+    "calledphone": {
+      "type": "string",
+      "generator": "phone"
+    },
+    "callphone": {
+      "type": "string",
+      "generator": "phone"
+    },
+    "created_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "djbm": {
+      "type": "string",
+      "generator": "random_choice:信访办公室,接访处,服务大厅,政务服务中心,市民热线中心"
+    },
+    "djbmdm": {
+      "type": "bigint",
+      "generator": "random_choice:1534957823627120642,1534959068035174402,1534959069230551041,1534959069842919426,1534943391526178817"
+    },
+    "djjgdm": {
+      "type": "string",
+      "generator": "random_choice:BW0001,BW0002,BW0003"
+    },
+    "djjgjb": {
+      "type": "string",
+      "generator": "fixed:1"
+    },
+    "djjgmc": {
+      "type": "string",
+      "generator": "random_choice:人民网,国家政务服务平台,国家信访局"
+    },
+    "djr": {
+      "type": "string",
+      "generator": "name"
+    },
+    "djrdm": {
+      "type": "bigint",
+      "generator": "random_int:100000,999999"
+    },
+    "djsj": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:created_time,3600"
+    },
+    "fjsl": {
+      "type": "smallint",
+      "min": 0,
+      "max": 5
+    },
+    "gkbz": {
+      "type": "string",
+      "generator": "weighted_choice:1:0.9,0:0.1"
+    },
+    "hyfl": {
+      "type": "string",
+      "generator": "random_choice:1,2,3,4,5"
+    },
+    "hyflmc": {
+      "type": "string",
+      "generator": "random_choice:市场监督,交通,网络防沉迷,货车司机权益保障,企业服务"
+    },
+    "isbm": {
+      "type": "string",
+      "generator": "weighted_choice:0:0.9,1:0.1"
+    },
+    "issq": {
+      "type": "string",
+      "generator": "weighted_choice:0:0.7,1:0.3"
+    },
+    "nmbz": {
+      "type": "string",
+      "generator": "weighted_choice:0:0.8,1:0.2"
+    },
+    "nrfl": {
+      "type": "string",
+      "generator": "random_choice:220100,220200,220300,220400,220500,230100,230200,230300,240100,240200,250100,250200,260100,260200"
+    },
+    "tsnr": {
+      "type": "text",
+      "generator": "random_text:50,200"
+    },
+    "update_time": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:created_time,86400"
+    },
+    "wtsd": {
+      "type": "string",
+      "generator": "random_choice:330000000000,330100000000,330200000000,330300000000,330400000000,330500000000,330600000000,330700000000,330800000000,330900000000,331000000000,331100000000"
+    },
+    "wtsd_addr": {
+      "type": "string",
+      "generator": "random_choice:浙江省,杭州市,宁波市,温州市,嘉兴市,湖州市,绍兴市,金华市,衢州市,舟山市,台州市,丽水市"
+    },
+    "sxrq": {
+      "type": "timestamp",
+      "generator": "current_date"
+    },
+    "sxrs": {
+      "type": "string",
+      "min": 1,
+      "max": 10
+    },
+    "sxxs": {
+      "type": "string",
+      "generator": "weighted_choice:信:0.03,访:0.07,网:0.1,电:0.8"
+    },
+    "xm": {
+      "type": "string",
+      "generator": "name"
+    },
+    "fjbh": {
+      "type": "string",
+      "generator": "format:FJ{date:yyyyMMdd}{random:6}"
+    },
+    "yjly": {
+      "type": "string",
+      "generator": "random_choice:101,102,103"
+    },
+    "timestamp": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "local_timestamp": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    }
+  },
+  "relationships": {
+    "sxbh": {
+      "table": "test_data_exchange_people_info",
+      "field": "sxbh"
+    }
+  },
+  "post_process": []
+}

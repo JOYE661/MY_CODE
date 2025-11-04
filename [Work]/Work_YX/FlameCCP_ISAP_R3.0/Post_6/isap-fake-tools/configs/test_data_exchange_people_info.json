@@ -1,0 +1,98 @@
+{
+  "fields": {
+    "id": {
+      "type": "bigint",
+      "generator": "incremental"
+    },
+    "sxbh": {
+      "type": "string",
+      "generator": "foreign_key"
+    },
+    "xm": {
+      "type": "string",
+      "generator": "name"
+    },
+    "mz": {
+      "type": "string",
+      "generator": "random_choice:01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56"
+    },
+    "sjh": {
+      "type": "string",
+      "generator": "phone"
+    },
+    "xb": {
+      "type": "string",
+      "generator": "weighted_choice:1:0.5,0:0.5"
+    },
+    "xh": {
+      "type": "string",
+      "generator": "sequence:1"
+    },
+    "yzbm": {
+      "type": "string",
+      "generator": "random_choice:310000,100000,200000,300000,400000,500000,510000,610000,710000,810000,830000"
+    },
+    "zjhm": {
+      "type": "string",
+      "generator": "id_card"
+    },
+    "zjlx": {
+      "type": "string",
+      "generator": "random_choice:1,2,3,4,5,6,7,99"
+    },
+    "zy": {
+      "type": "string",
+      "generator": "random_choice:01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20"
+    },
+    "zz": {
+      "type": "string",
+      "generator": "format:{zzzw}详细地址{random:3}号"
+    },
+    "zzdm": {
+      "type": "string",
+      "generator": "random_choice:330000000000,330100000000,330200000000,330300000000,330400000000,330500000000,330600000000,330700000000,330800000000,330900000000,331000000000,331100000000"
+    },
+    "zzmm": {
+      "type": "string",
+      "generator": "random_choice:01,02,03,04,05,06,07,08,09,10,11,12,13"
+    },
+    "zzzw": {
+      "type": "string",
+      "generator": "random_choice:浙江省,杭州市,宁波市,温州市,嘉兴市,湖州市,绍兴市,金华市,衢州市,舟山市,台州市,丽水市"
+    },
+    "create_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "update_time": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:create_time,3600"
+    },
+    "timestamp": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    }
+  },
+  "relationships": {
+    "sxbh": {
+      "table": "test_data_exchange_item_info",
+      "field": "sxbh"
+    }
+  },
+  "post_process": [
+    {
+      "type": "field_dependency",
+      "source_field": "sxxs",
+      "target_field": "zjlx",
+      "condition": "sxxs == '网'",
+      "action": "set_fixed:1"
+    },
+    {
+      "type": "field_dependency", 
+      "source_field": "sxxs",
+      "target_field": "zjhm",
+      "condition": "sxxs == '网'",
+      "action": "require"
+    }
+  ]
+}

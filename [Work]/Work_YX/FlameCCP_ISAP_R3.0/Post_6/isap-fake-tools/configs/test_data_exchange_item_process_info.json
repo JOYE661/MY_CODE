@@ -1,0 +1,109 @@
+{
+  "fields": {
+    "id": {
+      "type": "bigint",
+      "generator": "incremental"
+    },
+    "sxbh": {
+      "type": "string",
+      "generator": "foreign_key"
+    },
+    "blfs": {
+      "type": "string",
+      "generator": "random_choice:转送,告知,答复"
+    },
+    "bljgdm": {
+      "type": "string",
+      "generator": "random_choice:330000000000,330100000000,330200000000,330300000000,330400000000,330500000000,330600000000,330700000000,330800000000,330900000000,331000000000,331100000000"
+    },
+    "bljg": {
+      "type": "string",
+      "generator": "random_choice:人大常委会办公厅,人力资源和社会保障厅,水利厅,政府办公厅,农业农村厅,人民检察院,公安厅,财政厅,司法厅,住房和城乡建设厅,交通运输厅,体育局,生态环境厅,机关事务管理局,药品监督管理局"
+    },
+    "dept_id": {
+      "type": "bigint",
+      "generator": "random_choice:1534957823627120642,1534959068035174402,1534959069230551041,1534959069842919426,1534943391526178817,1534961383555223553,1534961384142426113,1534961384738017281,1534961385325219842,1534961386524790785,1534961387128770561,1534961390790397953,1534961391398572034,1534961394384916481,1534961395580293121"
+    },
+    "dept_name": {
+      "type": "string",
+      "generator": "random_choice:人大常委会办公厅,人力资源和社会保障厅,水利厅,政府办公厅,农业农村厅,人民检察院,公安厅,财政厅,司法厅,住房和城乡建设厅,交通运输厅,体育局,生态环境厅,机关事务管理局,药品监督管理局"
+    },
+    "user_id": {
+      "type": "bigint",
+      "generator": "random_int:100000,999999"
+    },
+    "user_name": {
+      "type": "string",
+      "generator": "name"
+    },
+    "blsj": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:create_time,86400"
+    },
+    "dfnr": {
+      "type": "text",
+      "generator": "format:{user_name}您好：您反应的{random_text:10,30}问题{process_result}"
+    },
+    "fjsl": {
+      "type": "bigint",
+      "min": 0,
+      "max": 3
+    },
+    "fjbh": {
+      "type": "bigint",
+      "generator": "random_int:100000,999999"
+    },
+    "update_time": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:create_time,172800"
+    },
+    "create_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "timestamp": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "local_timestamp": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    }
+  },
+  "relationships": {
+    "sxbh": {
+      "table": "test_data_exchange_item_info",
+      "field": "sxbh"
+    }
+  },
+  "post_process": [
+    {
+      "type": "field_dependency",
+      "source_field": "blfs",
+      "target_field": "dfnr",
+      "condition": "blfs == '转送'",
+      "action": "set_empty"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "blfs",
+      "target_field": "dfnr",
+      "condition": "blfs == '告知'",
+      "action": "set_fixed:{user_name}您好：您反应的XX问题已受理，问题正在处理中，请耐心等待。"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "blfs",
+      "target_field": "dfnr",
+      "condition": "blfs == '答复'",
+      "action": "set_fixed:{user_name}您好：您反应的问题已得到妥善解决{random_text:20,50}"
+    },
+    {
+      "type": "time_sequence",
+      "field": "blsj",
+      "reference_field": "create_time",
+      "min_offset": 3600,
+      "max_offset": 2592000
+    }
+  ]
+}
