@@ -18,11 +18,11 @@
     },
     "calledphone": {
       "type": "string",
-      "generator": "phone"
+      "generator": "faker_phone_number"
     },
     "callphone": {
       "type": "string",
-      "generator": "phone"
+      "generator": "faker_phone_number"
     },
     "created_time": {
       "type": "timestamp",
@@ -42,6 +42,7 @@
     },
     "djjgjb": {
       "type": "string",
+      "max_length": 1,
       "generator": "fixed:1"
     },
     "djjgmc": {
@@ -50,7 +51,7 @@
     },
     "djr": {
       "type": "string",
-      "generator": "name"
+      "generator": "faker_name"
     },
     "djrdm": {
       "type": "bigint",
@@ -62,8 +63,7 @@
     },
     "fjsl": {
       "type": "smallint",
-      "min": 0,
-      "max": 5
+      "generator":"random_int:0,5"
     },
     "gkbz": {
       "type": "string",
@@ -95,7 +95,7 @@
     },
     "tsnr": {
       "type": "text",
-      "generator": "random_text:50,200"
+      "generator": "random_choice:小区物业未经业主同意收取垃圾处理费,暴雨后XX路积水严重，车辆无法通行,建议在XX小区门口增设公交站点，方便居民出行,XX工地凌晨仍在施工，噪音严重影响周边居民休息"
     },
     "update_time": {
       "type": "timestamp",
@@ -115,8 +115,8 @@
     },
     "sxrs": {
       "type": "string",
-      "min": 1,
-      "max": 10
+      "max_length": 1,
+      "generator": "random_int:1,9"
     },
     "sxxs": {
       "type": "string",
@@ -124,7 +124,7 @@
     },
     "xm": {
       "type": "string",
-      "generator": "name"
+      "generator": "faker_name"
     },
     "fjbh": {
       "type": "string",
@@ -134,20 +134,12 @@
       "type": "string",
       "generator": "random_choice:101,102,103"
     },
-    "timestamp": {
-      "type": "timestamp",
-      "generator": "current_timestamp"
-    },
+
     "local_timestamp": {
       "type": "timestamp",
       "generator": "current_timestamp"
     }
   },
-  "relationships": {
-    "sxbh": {
-      "table": "test_data_exchange_people_info",
-      "field": "sxbh"
-    }
-  },
+  "relationships": {},
   "post_process": []
 }

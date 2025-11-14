@@ -6,7 +6,7 @@
     },
     "sxbh": {
       "type": "string",
-      "generator": "format:WS{date:yyyyMMdd}{random:6}"
+      "generator": "format:SX{date:yyyyMMdd}{random:6}"
     },
     "sxmd": {
       "type": "string",
@@ -14,15 +14,57 @@
     },
     "bt": {
       "type": "string",
-      "generator": "format:网事项-{name}-{wtsd}问题"
+      "generator": "format:{sxxs}事项-{name}-{wtsd}问题"
+    },
+    "calledphone": {
+      "type": "string",
+      "generator": "faker_phone_number"
+    },
+    "callphone": {
+      "type": "string",
+      "generator": "faker_phone_number"
     },
     "created_time": {
       "type": "timestamp",
       "generator": "current_timestamp"
     },
+    "djbm": {
+      "type": "string",
+      "generator": "random_choice:信访办公室,接访处,服务大厅,政务服务中心,市民热线中心"
+    },
+    "djbmdm": {
+      "type": "bigint",
+      "generator": "random_choice:1534957823627120642,1534959068035174402,1534959069230551041,1534959069842919426,1534943391526178817"
+    },
+    "djjgdm": {
+      "type": "string",
+      "generator": "random_choice:BW0001,BW0002,BW0003"
+    },
+    "djjgjb": {
+      "type": "string",
+      "max_length": 1,
+      "generator": "fixed:1"
+    },
+    "djjgmc": {
+      "type": "string",
+      "generator": "random_choice:人民网,国家政务服务平台,国家信访局"
+    },
+    "djr": {
+      "type": "string",
+      "generator": "faker_name"
+    },
+    "djrdm": {
+      "type": "bigint",
+      "generator": "random_int:100000,999999"
+    },
+    "djsj": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:created_time,3600"
+    },
     "fjsl": {
       "type": "smallint",
-      "generator":"random_int:0,5"
+      "min": 0,
+      "max": 5
     },
     "gkbz": {
       "type": "string",
@@ -74,32 +116,26 @@
     },
     "sxrs": {
       "type": "string",
-      "generator": "fixed:1"
+      "max_length": 1,
+      "generator": "random_int:1,9"
     },
     "sxxs": {
       "type": "string",
-      "generator": "fixed:网"
+      "generator": "weighted_choice:信:0.03,访:0.07,网:0.1,电:0.8"
     },
     "xm": {
       "type": "string",
       "generator": "faker_name"
     },
+    "fjbh": {
+      "type": "string",
+      "generator": "format:FJ{date:yyyyMMdd}{random:6}"
+    },
     "yjly": {
       "type": "string",
-      "generator": "random_choice:201,202,203,301"
+      "generator": "random_choice:101,102,103"
     },
-    "zjhm": {
-      "type": "string",
-      "generator": "id_card"
-    },
-    "sjh": {
-      "type": "string",
-      "generator": "faker_phone_number"
-    },
-    "zjlx": {
-      "type": "string",
-      "generator": "fixed:1"
-    },
+
     "local_timestamp": {
       "type": "timestamp",
       "generator": "current_timestamp"

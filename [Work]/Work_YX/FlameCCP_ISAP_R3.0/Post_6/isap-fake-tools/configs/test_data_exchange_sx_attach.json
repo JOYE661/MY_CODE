@@ -8,6 +8,14 @@
       "type": "string",
       "generator": "foreign_key"
     },
+    "original_name": {
+      "type": "string",
+      "generator": "random_choice:投诉材料.jpg,证据照片.png,身份证明.pdf,合同文件.doc,说明文档.docx,其他材料.zip,视频证据.mp4,音频证据.mp3,扫描文件.pdf,截图文件.jpg,数据表格.xlsx"
+    },
+    "extension": {
+      "type": "string",
+      "generator": "extension_from_original_name"
+    },
     "link": {
       "type": "text",
       "generator": "format:https://oss.example.com/attachments/{date:yyyyMMdd}/{random:12}.{extension}"
@@ -16,18 +24,9 @@
       "type": "string",
       "generator": "format:ATTACH_{random:10}.{extension}"
     },
-    "original_name": {
-      "type": "string",
-      "generator": "random_choice:投诉材料.jpg,证据照片.png,身份证明.pdf,合同文件.doc,说明文档.docx,其他材料.zip,视频证据.mp4,音频证据.mp3,扫描文件.pdf,截图文件.jpg"
-    },
-    "extension": {
-      "type": "string",
-      "generator": "random_choice:jpg,png,pdf,doc,docx,zip,mp4,mp3,txt,xls,xlsx"
-    },
     "attach_size": {
       "type": "bigint",
-      "min": 1024,
-      "max": 10485760
+      "generator":"random_int:1024,10485760"
     },
     "create_time": {
       "type": "timestamp",
@@ -48,62 +47,5 @@
       "field": "sxbh"
     }
   },
-  "post_process": [
-    {
-      "type": "field_dependency",
-      "source_field": "original_name",
-      "target_field": "extension",
-      "condition": "original_name contains '.jpg'",
-      "action": "set_fixed:jpg"
-    },
-    {
-      "type": "field_dependency",
-      "source_field": "original_name",
-      "target_field": "extension",
-      "condition": "original_name contains '.png'",
-      "action": "set_fixed:png"
-    },
-    {
-      "type": "field_dependency",
-      "source_field": "original_name",
-      "target_field": "extension",
-      "condition": "original_name contains '.pdf'",
-      "action": "set_fixed:pdf"
-    },
-    {
-      "type": "field_dependency",
-      "source_field": "original_name",
-      "target_field": "extension",
-      "condition": "original_name contains '.doc'",
-      "action": "set_fixed:doc"
-    },
-    {
-      "type": "field_dependency",
-      "source_field": "original_name",
-      "target_field": "extension",
-      "condition": "original_name contains '.docx'",
-      "action": "set_fixed:docx"
-    },
-    {
-      "type": "field_dependency",
-      "source_field": "original_name",
-      "target_field": "extension",
-      "condition": "original_name contains '.zip'",
-      "action": "set_fixed:zip"
-    },
-    {
-      "type": "field_dependency",
-      "source_field": "original_name",
-      "target_field": "extension",
-      "condition": "original_name contains '.mp4'",
-      "action": "set_fixed:mp4"
-    },
-    {
-      "type": "field_dependency",
-      "source_field": "original_name",
-      "target_field": "extension",
-      "condition": "original_name contains '.mp3'",
-      "action": "set_fixed:mp3"
-    }
-  ]
+  "post_process": []
 }

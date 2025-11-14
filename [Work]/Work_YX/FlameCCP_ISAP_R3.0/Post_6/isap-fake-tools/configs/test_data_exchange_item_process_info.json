@@ -34,7 +34,7 @@
     },
     "user_name": {
       "type": "string",
-      "generator": "name"
+      "generator": "faker_name"
     },
     "blsj": {
       "type": "timestamp",
@@ -46,8 +46,7 @@
     },
     "fjsl": {
       "type": "bigint",
-      "min": 0,
-      "max": 3
+      "generator": "random_int:0,3"
     },
     "fjbh": {
       "type": "bigint",
@@ -61,10 +60,7 @@
       "type": "timestamp",
       "generator": "current_timestamp"
     },
-    "timestamp": {
-      "type": "timestamp",
-      "generator": "current_timestamp"
-    },
+
     "local_timestamp": {
       "type": "timestamp",
       "generator": "current_timestamp"
@@ -89,14 +85,14 @@
       "source_field": "blfs",
       "target_field": "dfnr",
       "condition": "blfs == '告知'",
-      "action": "set_fixed:{user_name}您好：您反应的XX问题已受理，问题正在处理中，请耐心等待。"
+      "action": "set_fixed:{name}您好：您反应的问题已受理，问题正在处理中，请耐心等待。"
     },
     {
       "type": "field_dependency",
       "source_field": "blfs",
       "target_field": "dfnr",
       "condition": "blfs == '答复'",
-      "action": "set_fixed:{user_name}您好：您反应的问题已得到妥善解决{random_text:20,50}"
+      "action": "set_fixed:{name}您好：您反应的问题已得到妥善解决:关于{random_text:20,50}"
     },
     {
       "type": "time_sequence",

@@ -10,7 +10,7 @@
     },
     "xm": {
       "type": "string",
-      "generator": "name"
+      "generator": "faker_name"
     },
     "mz": {
       "type": "string",
@@ -18,7 +18,7 @@
     },
     "sjh": {
       "type": "string",
-      "generator": "phone"
+      "generator": "faker_phone_number_with_dirty"
     },
     "xb": {
       "type": "string",
@@ -26,7 +26,7 @@
     },
     "xh": {
       "type": "string",
-      "generator": "sequence:1"
+      "generator": "people_sequence"
     },
     "yzbm": {
       "type": "string",
@@ -42,11 +42,12 @@
     },
     "zy": {
       "type": "string",
-      "generator": "random_choice:01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20"
+      "max_length": 2,
+      "generator": "random_choice:工人,农民,教师,医生,军人,警察,学生,干部,职员,经理,老板,司机,厨师,护士,律师,会计,编辑,记者,演员,歌手,画家,作家,导演,设计,编程,测试,运维,销售,市场,客服,采购,财务,行政,人事,研发,生产,质量,物流,仓储,运输,建筑,装修,安装,维修,保安,保洁,快递,外卖,餐饮,酒店,旅游,美容,美发,健身,教练,顾问,咨询,投资,保险,证券,银行,信托,基金,租赁,广告,传媒,出版,印刷,包装,环保,能源,化工,机械,电子,电气,通信,网络,软件,硬件,数据,AI,VR,AR,游戏,动漫,电影,电视,音乐,舞蹈,体育,健身,医疗,养老,教育,培训,科研,学术,政府,事业,社团,协会,公益,慈善,宗教,其他"
     },
     "zz": {
       "type": "string",
-      "generator": "format:{zzzw}详细地址{random:3}号"
+      "generator": "faker_street_address"
     },
     "zzdm": {
       "type": "string",
@@ -54,11 +55,12 @@
     },
     "zzmm": {
       "type": "string",
-      "generator": "random_choice:01,02,03,04,05,06,07,08,09,10,11,12,13"
+      "generator": "random_choice:群众,党员"
     },
     "zzzw": {
       "type": "string",
-      "generator": "random_choice:浙江省,杭州市,宁波市,温州市,嘉兴市,湖州市,绍兴市,金华市,衢州市,舟山市,台州市,丽水市"
+      "max_length": 2,
+      "generator": "random_choice:浙江,杭州,宁波,温州,嘉兴,湖州,绍兴,金华,衢州,舟山,台州,丽水"
     },
     "create_time": {
       "type": "timestamp",
@@ -67,11 +69,8 @@
     "update_time": {
       "type": "timestamp",
       "generator": "timestamp_offset:create_time,3600"
-    },
-    "timestamp": {
-      "type": "timestamp",
-      "generator": "current_timestamp"
     }
+
   },
   "relationships": {
     "sxbh": {
