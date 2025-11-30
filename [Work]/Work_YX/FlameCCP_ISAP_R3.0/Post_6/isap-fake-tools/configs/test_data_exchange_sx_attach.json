@@ -1,0 +1,51 @@
+{
+  "fields": {
+    "id": {
+      "type": "bigint",
+      "generator": "incremental"
+    },
+    "sxbh": {
+      "type": "string",
+      "generator": "foreign_key"
+    },
+    "original_name": {
+      "type": "string",
+      "generator": "random_choice:投诉材料.jpg,证据照片.png,身份证明.pdf,合同文件.doc,说明文档.docx,其他材料.zip,视频证据.mp4,音频证据.mp3,扫描文件.pdf,截图文件.jpg,数据表格.xlsx"
+    },
+    "extension": {
+      "type": "string",
+      "generator": "extension_from_original_name"
+    },
+    "link": {
+      "type": "text",
+      "generator": "format:https://oss.example.com/attachments/{date:yyyyMMdd}/{random:12}.{extension}"
+    },
+    "name": {
+      "type": "string",
+      "generator": "format:ATTACH_{random:10}.{extension}"
+    },
+    "attach_size": {
+      "type": "bigint",
+      "generator":"random_int:1024,10485760"
+    },
+    "create_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "full_path": {
+      "type": "text",
+      "generator": "format:/data/attachments/{date:yyyy/MM/dd}/{random:12}.{extension}"
+    },
+    "timestamp": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    }
+  },
+  "relationships": {
+    "sxbh": {
+      "table": "test_data_exchange_item_info",
+      "field": "sxbh"
+    }
+  },
+  "post_process": []
+}

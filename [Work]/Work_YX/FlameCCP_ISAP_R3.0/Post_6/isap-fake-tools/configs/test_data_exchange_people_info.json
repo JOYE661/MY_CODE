@@ -1,0 +1,97 @@
+{
+  "fields": {
+    "id": {
+      "type": "bigint",
+      "generator": "incremental"
+    },
+    "sxbh": {
+      "type": "string",
+      "generator": "foreign_key"
+    },
+    "xm": {
+      "type": "string",
+      "generator": "faker_name"
+    },
+    "mz": {
+      "type": "string",
+      "generator": "random_choice:01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56"
+    },
+    "sjh": {
+      "type": "string",
+      "generator": "faker_phone_number_with_dirty"
+    },
+    "xb": {
+      "type": "string",
+      "generator": "weighted_choice:1:0.5,0:0.5"
+    },
+    "xh": {
+      "type": "string",
+      "generator": "people_sequence"
+    },
+    "yzbm": {
+      "type": "string",
+      "generator": "random_choice:310000,100000,200000,300000,400000,500000,510000,610000,710000,810000,830000"
+    },
+    "zjhm": {
+      "type": "string",
+      "generator": "id_card"
+    },
+    "zjlx": {
+      "type": "string",
+      "generator": "random_choice:1,2,3,4,5,6,7,99"
+    },
+    "zy": {
+      "type": "string",
+      "max_length": 2,
+      "generator": "random_choice:工人,农民,教师,医生,军人,警察,学生,干部,职员,经理,老板,司机,厨师,护士,律师,会计,编辑,记者,演员,歌手,画家,作家,导演,设计,编程,测试,运维,销售,市场,客服,采购,财务,行政,人事,研发,生产,质量,物流,仓储,运输,建筑,装修,安装,维修,保安,保洁,快递,外卖,餐饮,酒店,旅游,美容,美发,健身,教练,顾问,咨询,投资,保险,证券,银行,信托,基金,租赁,广告,传媒,出版,印刷,包装,环保,能源,化工,机械,电子,电气,通信,网络,软件,硬件,数据,AI,VR,AR,游戏,动漫,电影,电视,音乐,舞蹈,体育,健身,医疗,养老,教育,培训,科研,学术,政府,事业,社团,协会,公益,慈善,宗教,其他"
+    },
+    "zz": {
+      "type": "string",
+      "generator": "faker_street_address"
+    },
+    "zzdm": {
+      "type": "string",
+      "generator": "random_choice:330000000000,330100000000,330200000000,330300000000,330400000000,330500000000,330600000000,330700000000,330800000000,330900000000,331000000000,331100000000"
+    },
+    "zzmm": {
+      "type": "string",
+      "generator": "random_choice:群众,党员"
+    },
+    "zzzw": {
+      "type": "string",
+      "max_length": 2,
+      "generator": "random_choice:浙江,杭州,宁波,温州,嘉兴,湖州,绍兴,金华,衢州,舟山,台州,丽水"
+    },
+    "create_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "update_time": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:create_time,3600"
+    }
+
+  },
+  "relationships": {
+    "sxbh": {
+      "table": "test_data_exchange_item_info",
+      "field": "sxbh"
+    }
+  },
+  "post_process": [
+    {
+      "type": "field_dependency",
+      "source_field": "sxxs",
+      "target_field": "zjlx",
+      "condition": "sxxs == '网'",
+      "action": "set_fixed:1"
+    },
+    {
+      "type": "field_dependency", 
+      "source_field": "sxxs",
+      "target_field": "zjhm",
+      "condition": "sxxs == '网'",
+      "action": "require"
+    }
+  ]
+}

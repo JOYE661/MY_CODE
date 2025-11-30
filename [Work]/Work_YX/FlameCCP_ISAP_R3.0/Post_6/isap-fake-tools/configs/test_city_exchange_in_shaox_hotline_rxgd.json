@@ -1,0 +1,318 @@
+{
+  "fields": {
+    "caller_id": {
+      "type": "string",
+      "generator": "format:DH{date:yyyyMMdd}{random:6}"
+    },
+    "gender": {
+      "type": "string",
+      "generator": "weighted_choice:1:0.5,2:0.5"
+    },
+    "user_name": {
+      "type": "string",
+      "generator": "format:{user_name}"
+    },
+    "id_type": {
+      "type": "string",
+      "generator": "random_choice:1,2,3,4,5,6,7,99"
+    },
+    "id_no": {
+      "type": "string",
+      "generator": "id_card"
+    },
+    "called_phone": {
+      "type": "string",
+      "generator": "fixed:12345"
+    },
+    "tel_phone": {
+      "type": "string",
+      "generator": "faker_phone_number"
+    },
+    "income_phone": {
+      "type": "string",
+      "generator": "faker_phone_number"
+    },
+    "problem_source": {
+      "type": "string",
+      "generator": "random_choice:330000000000,330100000000,330200000000,330300000000,330400000000,330500000000,330600000000,330700000000,330800000000,330900000000,331000000000,331100000000"
+    },
+    "problem_occurrence": {
+      "type": "string",
+      "generator": "format:{address}"
+    },
+    "usual_address_id": {
+      "type": "string",
+      "generator": "format:{problem_source}"
+    },
+    "usual_address": {
+      "type": "string",
+      "generator": "format:{address}详细地址{random:3}号"
+    },
+    "residence_address": {
+      "type": "string",
+      "generator": "format:{address}户籍地址{random:3}号"
+    },
+    "letter_date": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "company_tag": {
+      "type": "string",
+      "generator": "weighted_choice:0:0.8,1:0.2"
+    },
+    "company_name": {
+      "type": "string",
+      "generator": "faker_company"
+    },
+    "enrollment_method": {
+      "type": "string",
+      "generator": "fixed:电"
+    },
+    "letter_aim": {
+      "type": "string",
+      "generator": "random_choice:咨询,建议,申诉,求决"
+    },
+    "suggest_tag": {
+      "type": "string",
+      "generator": "weighted_choice:0:0.7,1:0.3"
+    },
+    "content_type": {
+      "type": "string",
+      "generator": "random_choice:220100,220200,220300,220400,220500,230100,230200,230300,240100,240200,250100,250200,260100,260200"
+    },
+    "title": {
+      "type": "string",
+      "generator": "format:电事项-{name}-{address}问题"
+    },
+    "open_tag": {
+      "type": "string",
+      "generator": "weighted_choice:1:0.9,0:0.1"
+    },
+    "anonymus_tag": {
+      "type": "string",
+      "generator": "weighted_choice:0:0.8,1:0.2"
+    },
+    "data_type": {
+      "type": "string",
+      "generator": "fixed:1"
+    },
+    "cue_of_time": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:letter_date,1296000"
+    },
+    "enrollment_id": {
+      "type": "string",
+      "generator": "random_int:100000,999999"
+    },
+    "enrollment_name": {
+      "type": "string",
+      "generator": "faker_name"
+    },
+    "enrollment_time": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:letter_date,600"
+    },
+    "enrollment_unit": {
+      "type": "string",
+      "generator": "random_choice:信访办公室,接访处,服务大厅,政务服务中心,市民热线中心"
+    },
+    "submit_content": {
+      "type": "string",
+      "generator": "random_text:100,500"
+    },
+    "reply_content": {
+      "type": "string",
+      "generator": "format:{enrollment_name}您好：您反应的{random_text:20,50}问题已得到妥善解决{random_text:30,100}"
+    },
+    "created_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    },
+    "updated_time": {
+      "type": "timestamp",
+      "generator": "timestamp_offset:created_time,3600"
+    },
+    "source_phone": {
+      "type": "string",
+      "generator": "faker_phone_number"
+    },
+    "industry_sort": {
+      "type": "string",
+      "generator": "random_choice:1,2,3,4,5"
+    },
+    "zyhy": {
+      "type": "string",
+      "generator": "random_choice:市场监督,交通,网络防沉迷,货车司机权益保障,企业服务"
+    },
+    "isbm": {
+      "type": "string",
+      "generator": "weighted_choice:0:0.9,1:0.1"
+    },
+    "jjcd": {
+      "type": "string",
+      "generator": "weighted_choice:2:0.9,1:0.1"
+    },
+    "sjly": {
+      "type": "string",
+      "generator": "random_choice:330000000000,330100000000,330200000000,330300000000,330400000000,330500000000,330600000000,330700000000,330800000000,330900000000,331000000000,331100000000"
+    },
+    "yjly": {
+      "type": "string",
+      "generator": "random_choice:400,401,402,403,404,405,406,407,408,409,410,411"
+    },
+    "local_create_time": {
+      "type": "timestamp",
+      "generator": "current_timestamp"
+    }
+  },
+  "relationships": {},
+  "post_process": [
+    {
+      "type": "field_dependency",
+      "source_field": "gender",
+      "target_field": "user_name",
+      "condition": "gender == '1'",
+      "action": "set_fixed:{name}先生"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "gender",
+      "target_field": "user_name",
+      "condition": "gender == '2'",
+      "action": "set_fixed:{name}女士"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "company_tag",
+      "target_field": "company_name",
+      "condition": "company_tag == '0'",
+      "action": "set_fixed: "
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "letter_aim",
+      "target_field": "suggest_tag",
+      "condition": "letter_aim == '建议'",
+      "action": "set_fixed:1"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "letter_aim",
+      "target_field": "suggest_tag",
+      "condition": "letter_aim != '建议'",
+      "action": "set_fixed:0"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330000000000'",
+      "action": "set_fixed:浙江省"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330100000000'",
+      "action": "set_fixed:浙江省杭州市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330200000000'",
+      "action": "set_fixed:浙江省宁波市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330300000000'",
+      "action": "set_fixed:浙江省温州市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330400000000'",
+      "action": "set_fixed:浙江省嘉兴市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330500000000'",
+      "action": "set_fixed:浙江省湖州市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330600000000'",
+      "action": "set_fixed:浙江省绍兴市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330700000000'",
+      "action": "set_fixed:浙江省金华市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330800000000'",
+      "action": "set_fixed:浙江省衢州市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '330900000000'",
+      "action": "set_fixed:浙江省舟山市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '331000000000'",
+      "action": "set_fixed:浙江省台州市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "problem_source",
+      "target_field": "address",
+      "condition": "problem_source == '331100000000'",
+      "action": "set_fixed:浙江省丽水市"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "address",
+      "target_field": "problem_occurrence",
+      "condition": "address != '' && problem_occurrence == '{address}'",
+      "action": "set_fixed:{address}"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "address",
+      "target_field": "usual_address",
+      "condition": "address != '' && usual_address contains '{address}'",
+      "action": "set_fixed:{address}详细地址{random:3}号"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "address",
+      "target_field": "residence_address",
+      "condition": "address != '' && residence_address contains '{address}'",
+      "action": "set_fixed:{address}户籍地址{random:3}号"
+    },
+    {
+      "type": "field_dependency",
+      "source_field": "address",
+      "target_field": "title",
+      "condition": "address != '' && title contains '{address}'",
+      "action": "set_fixed:电事项-{name}-{address}问题"
+    }
+  ]
+}
