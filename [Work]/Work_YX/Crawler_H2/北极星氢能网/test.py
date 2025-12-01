@@ -25,8 +25,9 @@ logging.basicConfig(
     ]
 )
 
+
 # 基础目录设置
-script_dir = "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/9_11_Task1/北极星氢能网/2025_News"
+script_dir = "/Users/joye/Desktop/MY_CODE/[Work]/Work_YX/Crawler_H2/北极星氢能网/2025_News"
 os.makedirs(script_dir, exist_ok=True)
 
 # 创建数据目录结构
