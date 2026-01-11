@@ -42,20 +42,20 @@ for /r "%LOG_DIR%" %%f in (*.log) do (
     )
 )
 
-REM Delete .log files in subdirectories (recursive)
-echo. >> "%LOG_FILE%"
-echo Deleting .log files in subdirectories: >> "%LOG_FILE%"
-for /d /r "%LOG_DIR%" %%d in (*) do (
-    if exist "%%d\*.log" (
-        echo Processing subdirectory: %%d >> "%LOG_FILE%"
-        for %%f in ("%%d\*.log") do (
+R
             echo Deleting: %%f >> "%LOG_FILE%"
             del "%%f" >nul 2>&1
             if !errorlevel! equ 0 (
                 echo Successfully deleted: %%f >> "%LOG_FILE%"
             ) else (
                 echo Failed to delete: %%f >> "%LOG_FILE%"
-            )
+            )EM Delete .log files in subdirectories (recursive)
+echo. >> "%LOG_FILE%"
+echo Deleting .log files in subdirectories: >> "%LOG_FILE%"
+for /d /r "%LOG_DIR%" %%d in (*) do (
+    if exist "%%d\*.log" (
+        echo Processing subdirectory: %%d >> "%LOG_FILE%"
+        for %%f in ("%%d\*.log") do (
         )
     )
 )
